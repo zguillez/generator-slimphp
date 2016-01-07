@@ -21,7 +21,7 @@ module.exports = yeoman.generators.Base.extend({
 			this.fs.copy(this.templatePath('Gruntfile.js'), this.destinationPath('Gruntfile.js'));
 			this.fs.copy(this.templatePath('index.php'), this.destinationPath('index.php'));
 			this.fs.copy(this.templatePath('grunt'), this.destinationPath('grunt'));
-			this.fs.copy(this.templatePath('int'), this.destinationPath('int'));
+			this.fs.copy(this.templatePath('inc'), this.destinationPath('inc'));
 		},
 		projectfiles: function() {
 			this.fs.copy(this.templatePath('editorconfig'), this.destinationPath('.editorconfig'));
