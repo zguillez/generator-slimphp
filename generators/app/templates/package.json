@@ -1,0 +1,19 @@
+{
+	"name": "generator-slimphp",
+	"version": "0.1.0",
+	"description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
+	"license": "MIT",
+	"main": "index.php",
+	"repository": "zguillez/generator-slimphp",
+	"author": {
+		"name": "Guillermo de la Iglesia",
+		"email": "mail@zguillez.io",
+		"url": "https://github.com/zguillez"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"load-grunt-tasks": "~3.4.0",
+		"grunt-php": "~1.5.1"
+	}
+}
