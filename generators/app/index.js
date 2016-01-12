@@ -3,9 +3,12 @@ var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
 module.exports = yeoman.generators.Base.extend({
+	initializing: function() {
+		this.pkg = require('../../package.json');
+	},
 	prompting: function() {
 		var done = this.async();
-		this.log(yosay('Welcome to the zetadelic ' + chalk.red('SlimPHP v0.1.0') + ' generator!'));
+		this.log(yosay('Welcome to the zetadelic ' + chalk.red('SlimPHP v' + this.pkg.version) + ' generator!'));
 		var prompts = [];
 		this.prompt(prompts, function(props) {
 			this.props = props;
