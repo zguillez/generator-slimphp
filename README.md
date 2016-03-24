@@ -7,7 +7,6 @@
 [![Installs](https://img.shields.io/npm/dt/generator-slimphp.svg)](https://coveralls.io/r/zguillez/generator-slimphp)
 ![](https://reposs.herokuapp.com/?path=zguillez/generator-slimphp)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
-[![Analytics](https://ga-beacon.appspot.com/UA-1125217-30/zguillez/generator-slimphp?pixel)](https://github.com/igrigorik/ga-beacon)
 
 > [Zguillez](https://zguillez.io) | Guillermo de la Iglesia
 
@@ -223,6 +222,9 @@ Contributors are welcome, please fork and send pull requests! If you have any id
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
 # Changelog
+### v1.1.0 (March 24, 2016)
+- Add DELETE and PUT methods
+
 ### v1.0.0 (January 12, 2016)
 - Fix yo install version
 
@@ -234,4 +236,6 @@ Features:
 * Slimframework
 * External route files
 * Grunt tasks
+
+[![Analytics](https://ga-beacon.appspot.com/UA-1125217-30/zguillez/generator-slimphp?pixel)](https://github.com/igrigorik/ga-beacon)
 

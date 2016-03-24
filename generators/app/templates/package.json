@@ -1,6 +1,6 @@
 {
 	"name": "generator-slimphp",
-	"version": "0.1.0",
+	"version": "1.1.0",
 	"description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
 	"license": "MIT",
 	"main": "index.php",
