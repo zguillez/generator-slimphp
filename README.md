@@ -7,6 +7,7 @@
 [![Installs](https://img.shields.io/npm/dt/generator-slimphp.svg)](https://coveralls.io/r/zguillez/generator-slimphp)
 ![](https://reposs.herokuapp.com/?path=zguillez/generator-slimphp)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+[![Join the chat at https://gitter.im/zguillez/generator-slimphp](https://badges.gitter.im/zguillez/generator-slimphp.svg)](https://gitter.im/zguillez/generator-slimphp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > [Zguillez](https://zguillez.io) | Guillermo de la Iglesia
 
@@ -25,6 +26,9 @@ To install generator-slimphp from npm, run:
 
 ```
 npm install -g generator-slimphp
+
+//or:
+sudo npm install -g generator-slimphp
 ```
 
 Finally, initiate the generator:
@@ -223,7 +227,7 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 
 # Changelog
 ### v1.1.0 (March 24, 2016)
-- Add DELETE and PUT methods
+- Allow DELETE and PUT methods
 
 ### v1.0.0 (January 12, 2016)
 - Fix yo install version
@@ -238,4 +242,3 @@ Features:
 * Grunt tasks
 
 [![Analytics](https://ga-beacon.appspot.com/UA-1125217-30/zguillez/generator-slimphp?pixel)](https://github.com/igrigorik/ga-beacon)
-
