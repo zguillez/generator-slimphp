@@ -40,7 +40,7 @@ yo slimphp
 Install composer dependences manually:
 
 ```bash
-./composer.phar install
+./composer.phar self-update && ./composer.phar install
 ```
 
 ## Requeriments
