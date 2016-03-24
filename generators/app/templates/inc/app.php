@@ -19,6 +19,10 @@ class App {
 			$this->app->post($route, $callback);
 		} else if ($method === 'GET') {
 			$this->app->get($route, $callback);
+		} else if ($method === 'PUT') {
+			$this->app->put($route, $callback);
+		} else if ($method === 'DELETE') {
+			$this->app->delete($route, $callback);
 		}
 	}
 	public function response($response, $data = '', $status = 200, $type = 'text/html') {

@@ -13,7 +13,7 @@
 	"dependencies": {},
 	"devDependencies": {
 		"grunt": "~0.4.5",
-		"load-grunt-tasks": "~3.4.0",
+		"load-grunt-tasks": "~3.4.1",
 		"grunt-php": "~1.5.1"
 	}
 }
