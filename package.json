@@ -1,6 +1,6 @@
 {
 	"name": "generator-slimphp",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
 	"license": "MIT",
 	"main": "app/index.js",
@@ -24,14 +24,14 @@
 	],
 	"dependencies": {
 		"yeoman-generator": "^0.22.5",
-		"chalk": "^1.1.1",
-		"yosay": "^1.1.0"
+		"chalk": "^1.1.3",
+		"yosay": "^1.1.1"
 	},
 	"devDependencies": {
 		"mocha": "*",
-		"bower": "^1.7.7",
-		"grunt": "^0.4.5",
-		"load-grunt-tasks": "^3.4.1",
+		"bower": "^1.7.9",
+		"grunt": "^1.0.1",
+		"load-grunt-tasks": "^3.5.0",
 		"grunt-contrib-connect": "~1.0.1"
 	}
 }
