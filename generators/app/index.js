@@ -38,7 +38,7 @@ module.exports = yeoman.Base.extend({
 		var scope = this;
 		this.installDependencies(function() {
 			console.log('\n\n' + chalk.underline.green('** Install Done! **') + '\n\n' + chalk.green(
-				'Install Symfony vendors running this command:') + '\n' + chalk.yellow(
+				'Install Slim vendors running this command:') + '\n' + chalk.yellow(
 				'./composer.phar self-update && ./composer.phar install') + '\n\n');
 		});
 	}
