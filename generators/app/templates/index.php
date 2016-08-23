@@ -1,9 +1,13 @@
 <?php
 
-require 'vendor/autoload.php';
-require 'inc/app.php';
-//require 'inc/config.php';
-$api->route('/', 'GET', require 'inc/routes/index.php');
-$api->route('/user/{token}', 'GET', require 'inc/routes/user.php');
-$api->route('/user/add/', 'POST', require 'inc/routes/user-add.php');
-$api->run();
+	date_default_timezone_set('Europe/Madrid');
+
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+
+	require 'vendor/autoload.php';
+	require 'inc/app.php';
+	require 'inc/routes.php';
+	//require 'inc/config.php';
+
+	$api->run();

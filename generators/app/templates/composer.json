@@ -1,5 +1,6 @@
 {
-	"require": {
-		"slim/slim": "^3.0"
-	}
+  "require": {
+    "slim/slim": "^3.0",
+    "zguillez/slim-mobile-detect": "^1.0"
+  }
 }
