@@ -312,7 +312,6 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 - Implements MobileResponse 
 - validateData and validateEmptyData methods
 
-# Changelog
 ### v1.1.0 (March 24, 2016)
 - Allow DELETE and PUT methods
 
