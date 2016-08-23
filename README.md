@@ -91,131 +91,211 @@ Distribute code is compileded on forder **/dist**
     /vendor
 ```
 
-# Configuration
+# Data base configuration
 
 Edit file **/inc/config.php** for Database configuration
 
-	// inc/config.php
-	
-	<?php
-	
-	$ip = '*.*.*.*';
-	$user = '********';
-	$password = '********';
-	$database = '********';
-	
-	$api->database($ip, $user, $password, $database);
+```
+$ip       = '*.*.*.*';
+$user     = '********';
+$password = '********';
+$database = '********';
+$api->database($ip, $user, $password, $database);
+```
 
->If you API don't connect to any database, comment the require of the config file:
+If you API don't connect to any database, comment the require of the config file:
 
-	// index.php
-	
-	<?php
-	
-	require 'vendor/autoload.php';
-	require 'inc/app.php';
-	//require 'inc/config.php';
-	....
+```
+// index.php
+
+<?php
+
+require 'vendor/autoload.php';
+require 'inc/app.php';
+require 'inc/routes.php';
+//require 'inc/config.php';
+....
+```
 
 # API Routes
 
-Put all your API urls into the file **/index.php**
+Put all your API urls into the file **/inc/routes.php**
 
-	// index.php
-	<?php
-	
-	...
-	$api->route('/', 'GET', require 'inc/routes/index.php');
-	...
+```
+// inc/routes
+<?php
+
+...
+$api->route('/', 'GET', require 'inc/routes/index.php');
+...
+```
+
+If your app is on a folder (for example '**/api**') uncomment this line:
+
+```
+//$api->folder('api');
+```
+This will work for **http://domain.com/api/** path.
 
 In the **/inc/routes/** folder make a induvidual file for the path function:
 
-	// inc/routes/index.php
-	
-	<?php
-	
-	return function ($request, $response, $args) {
-		global $api;
-		$html = '
-			<h2>Routes</h2>
-			<ul>
-			<li>/</li>
-			<li>/user/{token}</li>
-			<li>/user/add/</li>
-			</ul>
-			';
-	
-		return $api->response($response, $html, 200, 'text/html');
-	};
+```
+// inc/routes/index.php
+
+<?php
+
+return function ($request, $response, $args) {
+	global $api;
+	$html = '
+		<h2>Routes</h2>
+		<ul>
+		<li>/</li>
+		<li>/user/{token}</li>
+		<li>/user/add/</li>
+		</ul>
+		';
+
+	return $api->response($response, $html, 200, 'text/html');
+};
+```
 
 This will return an HTML file for the path http://localhost:9001/
 
 You can change the status response, for example to 404:
 
-	return $api->response($response, $html, 404, 'text/html');
+```
+return $api->response($response, $html, 404, 'text/html');
+```
 
 And the header content-type:
 	
-	return $api->response($response, $html, 200, 'application/json');
+```
+return $api->response($response, $html, 200, 'application/json');
+```
 
 ## Queries to the database
 
 Make the SQL queries in the routes files to the global object **$api**:
-	
-	// inc/routes/user.php
-	
-	<?php
-	
-	return function ($request, $response, $args) {
-		global $api;
-		$token = $request->getAttribute('token');
-		$data = $api->query("SELECT * FROM users WHERE token='" . $token . "'");
-	
-		return $api->response($response, json_encode($data), 200, 'application/json');
-	};
+
+```	
+// inc/routes/user.php
+
+<?php
+
+return function ($request, $response, $args) {
+	global $api;
+	$token = $request->getAttribute('token');
+	$data = $api->query("SELECT * FROM users WHERE token='" . $token . "'");
+
+	return $api->response($response, json_encode($data), 200, 'application/json');
+};
+```
 
 This will return some data to the dummy api url:
 
-	// index.php
-	<?php
-	
-	...
-	$api->route('/user/{token}', 'GET', require 'inc/routes/user.php');
-	...
+```
+// index.php
+<?php
+
+...
+$api->route('/user/{token}', 'GET', require 'inc/routes/user.php');
+...
+```
 
 # GET or POST
 
 You can do api call in GET or POST method:
 
-	// index.php
-	<?php
-	
-	...
-	$api->route('/user/{token}', 'GET', require 'inc/routes/user.php');
-	$api->route('/user/add/', 'POST', require 'inc/routes/user-add.php');
-	...
+```
+// index.php
+<?php
+
+...
+$api->route('/user/{token}', 'GET', require 'inc/routes/user.php');
+$api->route('/user/add/', 'POST', require 'inc/routes/user-add.php');
+...
+```
 
 To get POST data use the **getParseBody()** function:
 
-	// inc/routes/user-add.php
-	
-	<?php
-	
-	return function ($request, $response, $args) {
-		global $api;
-		$data = $request->getParsedBody();
-		$sql = "INSERT IGNORE INTO users (name, surname, email, phone, contact, token, ip) VALUES('" . $data["name"] . "','" . $data["surname"] . "','" . $data["email"] . "','" . $data["phone"] . "','" . $data["contact"] . "','" . $data["token"] . "','" . $_SERVER['REMOTE_ADDR'] . "')";
-		$leadid = $api->query($sql);
-		if ($leadid > 0) {
-			$status = 1;
-			$result["leadid"] = $leadid;
-		} else {
-			$status = 0;
-			$result["error"] = "Not inserted";
-		}
-	
-		return $api->response($response, json_encode(Array('status' => $status, 'result' => $result)), 200, 'application/json');
-	};
+```
+// inc/routes/user-add.php
+
+<?php
+
+return function ($request, $response, $args) {
+	global $api;
+	$data = $request->getParsedBody();
+	$sql = "INSERT IGNORE INTO users (name, surname, email, phone, contact, token, ip) VALUES('" . $data["name"] . "','" . $data["surname"] . "','" . $data["email"] . "','" . $data["phone"] . "','" . $data["contact"] . "','" . $data["token"] . "','" . $_SERVER['REMOTE_ADDR'] . "')";
+	$leadid = $api->query($sql);
+	if ($leadid > 0) {
+		$status = 1;
+		$result["leadid"] = $leadid;
+	} else {
+		$status = 0;
+		$result["error"] = "Not inserted";
+	}
+
+	return $api->response($response, json_encode(Array('status' => $status, 'result' => $result)), 200, 'application/json');
+};
+```
+
+# Mobile-Detect
+
+Mobile detection for api calls is implemented. 
+
+```
+{
+  "require": {
+    "slim/slim": "^3.0",
+    "zguillez/slim-mobile-detect": "^1.0"
+  }
+}
+```
+
+So you can edit the **response** function on app.php file:
+
+```
+public function response($response, $data = '', $status = 200, $type = 'text/html')
+{
+	$response = new MobileResponse($response);
+	return $response->withStatus($status)->withHeader('Content-type', $type)->write($data);
+}
+```
+
+For more info check:
+
+* [https://github.com/zguillez/slim-mobile-detect](https://github.com/zguillez/slim-mobile-detect)
+* [https://packagist.org/packages/zguillez/slim-mobile-detect](https://packagist.org/packages/zguillez/slim-mobile-detect)
+
+
+
+# Tools
+
+## validateData
+
+This function will check if a list of parameter are passed in POST data:
+
+```
+if ($api->validateData($data, ['name', 'email'])) {
+	...
+} else {
+	//error: no 'name' or 'email' parameter
+}
+```
+
+## validateEmptyData
+
+This function will check if a list of parameter are empty in POST data:
+
+```
+if ($api->validateEmptyData($data, ['name', 'email'])) {
+	...
+} else {
+	//error: 'name' or 'email' have empty value
+}
+```
+
 
 # Contributing and issues
 Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
@@ -224,6 +304,13 @@ Contributors are welcome, please fork and send pull requests! If you have any id
 ©2016 Zguillez.io
 
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
+
+# Changelog
+### v1.3.0 (August 23, 2016)
+- Core update
+- Update dependencies
+- Implements MobileResponse 
+- validateData and validateEmptyData methods
 
 # Changelog
 ### v1.1.0 (March 24, 2016)
