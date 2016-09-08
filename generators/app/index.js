@@ -2,6 +2,7 @@
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var spawnCommand = require('spawn-command');
 module.exports = yeoman.Base.extend({
 	initializing: function () {
 		this.pkg = require('../../package.json');
@@ -18,6 +19,7 @@ module.exports = yeoman.Base.extend({
 		this.fs.copy(this.templatePath('composer.phar'), this.destinationPath('composer.phar'));
 		this.fs.copy(this.templatePath('Gruntfile.js'), this.destinationPath('Gruntfile.js'));
 		this.fs.copy(this.templatePath('index.php'), this.destinationPath('index.php'));
+		this.fs.copy(this.templatePath('config.json'), this.destinationPath('config.json'));
 		this.fs.copy(this.templatePath('grunt'), this.destinationPath('grunt'));
 		this.fs.copy(this.templatePath('inc'), this.destinationPath('inc'));
 		this.fs.copy(this.templatePath('htaccess'), this.destinationPath('.htaccess'));
@@ -25,7 +27,11 @@ module.exports = yeoman.Base.extend({
 	install: function () {
 		var scope = this;
 		this.installDependencies(function () {
-			console.log('\n\n' + chalk.underline.green('** Install Done! **') + '\n\n' + chalk.green('Install Slim vendors running this command:') + '\n' + chalk.yellow('./composer.phar self-update && ./composer.phar install') + '\n\n');
+			console.log('\nRunning ' + chalk.bold.yellow('grunt prepare') + ' for you to install the required Slim vendors. If folder /vendors isn\'t created, try running the command yourself or run ' + chalk.bold.yellow('./composer.phar self-update && ./composer.phar install') + '\n\n');
+			var child = spawnCommand('grunt prepare');
+			child.stdout.on('data', function (data) {
+				console.log(data.toString('utf8'));
+			});
 		});
 	}
 });

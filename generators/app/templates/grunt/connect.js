@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 				protocol: 'http',
 				hostname: 'localhost',
 				port: '9001',
-				base: '',
+				base: 'dist',
 				open: '/index.php',
 				keepalive: true
 			}

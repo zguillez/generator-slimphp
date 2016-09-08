@@ -18,4 +18,5 @@
 		$html .= '</ul>';
 
 		return $api->response($response, $html, 200, 'text/html');
+		
 	};

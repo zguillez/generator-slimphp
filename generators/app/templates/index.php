@@ -8,6 +8,6 @@
 	require 'vendor/autoload.php';
 	require 'inc/app.php';
 	require 'inc/routes.php';
-	//require 'inc/config.php';
+	require 'inc/config.php';
 
 	$api->run();

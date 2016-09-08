@@ -1,0 +1,19 @@
+{
+  "dev_domain": "http://myapi.dev",
+  "pro_domain": "http://myapi.com",
+  "dev_path": "/Users/zguillez/Sites/myapi",
+  "www_folder": "api",
+  "deploy_folder": "dist",
+  "ssh": {
+    "ip": "",
+    "user": "",
+    "password": "",
+    "path": ""
+  },
+  "database": {
+    "ip": "",
+    "user": "",
+    "password": "",
+    "database": ""
+  }
+}
