@@ -1,6 +1,7 @@
 {
   "require": {
     "slim/slim": "^3.0",
-    "zguillez/slim-mobile-detect": "^1.0"
+    "zguillez/slim-mobile-detect": "^1.0",
+    "zguillez/php-xmlog": "^1.1"
   }
 }

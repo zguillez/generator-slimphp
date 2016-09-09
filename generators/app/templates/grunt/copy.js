@@ -17,6 +17,9 @@ module.exports = function (grunt) {
 			}, {
 				src: ['vendor/**'],
 				dest: config.deploy_folder + "/"
+			}, {
+				src: ['logs/**'],
+				dest: config.deploy_folder + "/"
 			}]
 		},
 		deploy: {

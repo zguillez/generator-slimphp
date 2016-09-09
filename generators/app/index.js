@@ -22,6 +22,7 @@ module.exports = yeoman.Base.extend({
 		this.fs.copy(this.templatePath('config.json'), this.destinationPath('config.json'));
 		this.fs.copy(this.templatePath('grunt'), this.destinationPath('grunt'));
 		this.fs.copy(this.templatePath('inc'), this.destinationPath('inc'));
+		this.fs.copy(this.templatePath('logs'), this.destinationPath('logs'));
 		this.fs.copy(this.templatePath('htaccess'), this.destinationPath('.htaccess'));
 	},
 	install: function () {

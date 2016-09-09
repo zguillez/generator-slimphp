@@ -1,11 +1,13 @@
 <?php
 	use Slim\Http\MobileResponse;
+	use Z\Log;
 
 	class App
 	{
 		public $baseurl;
 		public $host;
 		public $app;
+		public $log;
 		public $break;
 		private $database;
 		private $last_insert_id;
@@ -21,6 +23,9 @@
 					return $this->response($container['response'], 'Page not found', 404);
 				};
 			};
+			$params["filename"]                           = "apicalls";
+			$params["path"]                               = "./logs/";
+			$this->log                                    = new Log($params);
 		}
 		public function run()
 		{
@@ -42,6 +47,7 @@
 		public function response($response, $data = '', $status = 200, $type = 'text/html')
 		{
 			$response = new MobileResponse($response);
+			$this->log->insert($data);
 
 			return $response->withStatus($status)->withHeader('Content-type', $type)->write($data);
 		}
