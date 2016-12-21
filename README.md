@@ -99,7 +99,7 @@ Edit the **database** param for Database configuration
   }
 ```
 
-## log system
+## Log System
 
 All api call create a log file on /log folder. This folder must be created and with writte permitions.
 
