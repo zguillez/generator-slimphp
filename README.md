@@ -54,6 +54,61 @@ For update composer
 **Documentation:**
 - [https://getcomposer.org/](https://getcomposer.org/)
 
+
+# Configuration
+
+**First of all** you need to edit the file */config.json*. 
+
+## Virtual host configuration
+
+Edit the **dev_domain** param for set your developer localhost domain name.
+ 
+```
+"dev_domain": "http://slimphp.dev",
+```
+
+Edit your localhost virtual host for your computer. Execute this shell command:
+
+```
+sudo nano -w /etc/hosts
+```
+
+Add the virtual host:
+
+```
+127.0.0.1       slimphp.dev
+127.0.0.1       www.slimphp.dev
+```
+
+Set the path for your localhost app:
+
+```
+"dev_path": "/Users/zguillez/Sites/slimphp",
+```
+
+## Data base configuration
+
+Edit the **database** param for Database configuration
+
+```
+"database": {
+    "ip": "",
+    "user": "",
+    "password": "",
+    "database": ""
+  }
+```
+
+## log system
+
+All api call create a log file on /log folder. This folder must be created and with writte permitions.
+
+```
+/logs/apicalls.log
+```
+
+to disable the logs system remove or comment the line ```$this->log->insert($data);``` on **app.php** file.
+
 # Usage
 Develop code on folder **/inc**
 
@@ -75,10 +130,16 @@ Use grunt task to compile code and deploy api
 grunt serve
 ```
 
-THis will launch server on port 9001
+This will launch your vistual host defined on config.json
 
 ```
-http://localhost:9001/
+http://slimphp.dev
+```
+
+And launch files on folder defined con param *dev_path*:
+
+```
+/Users/zguillez/Sites/slimphp
 ```
 
 Distribute code is compileded on forder **/dist**
@@ -89,32 +150,6 @@ Distribute code is compileded on forder **/dist**
     /inc
     /index.php
     /vendor
-```
-
-# Data base configuration
-
-Edit file **/inc/config.php** for Database configuration
-
-```
-$ip       = '*.*.*.*';
-$user     = '********';
-$password = '********';
-$database = '********';
-$api->database($ip, $user, $password, $database);
-```
-
-If you API don't connect to any database, comment the require of the config file:
-
-```
-// index.php
-
-<?php
-
-require 'vendor/autoload.php';
-require 'inc/app.php';
-require 'inc/routes.php';
-//require 'inc/config.php';
-....
 ```
 
 # API Routes
@@ -306,6 +341,12 @@ Contributors are welcome, please fork and send pull requests! If you have any id
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
 # Changelog
+### v2.0.0 (December 21, 2016)
+- Setup virtual host
+- Config on json file
+- Publish api to production by SSH
+- Log system
+
 ### v1.3.0 (August 23, 2016)
 - Core update
 - Update dependencies
