@@ -1,7 +1,7 @@
 {
-  "dev_domain": "http://myapi.dev",
-  "pro_domain": "http://myapi.com",
-  "dev_path": "/Users/zguillez/Sites/myapi",
+  "dev_domain": "http://slimphp.dev",
+  "pro_domain": "http://slimphp.com",
+  "dev_path": "/Users/zguillez/Sites/slimphp",
   "www_folder": "api",
   "deploy_folder": "dist",
   "ssh": {

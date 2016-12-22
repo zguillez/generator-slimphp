@@ -107,6 +107,12 @@ All api call create a log file on /log folder. This folder must be created and w
 /logs/apicalls.log
 ```
 
+You can send traces to the log file from de routes by:
+
+```
+$api->log->insert ( $request->getUri () );
+```
+
 to disable the logs system remove or comment the line ```$this->log->insert($data);``` on **app.php** file.
 
 # Usage
@@ -304,6 +310,23 @@ For more info check:
 * [https://packagist.org/packages/zguillez/slim-mobile-detect](https://packagist.org/packages/zguillez/slim-mobile-detect)
 
 
+#Templating
+
+Mustache templates is implemented. You can load a template from the route file
+
+```
+$name = $request->getAttribute ( 'name' );
+
+$html = $api->template ( 'hello', ['name' => $name] );
+
+return $api->response ( $response , $html , 200 , 'text/html' );
+```
+
+The templates files are on folders **/inc/views/** and  **/inc/views/partials/**.
+
+For more info check:
+
+* [https://github.com/bobthecow/mustache.php](https://github.com/bobthecow/mustache.php)
 
 # Tools
 
@@ -346,6 +369,7 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 - Config on json file
 - Publish api to production by SSH
 - Log system
+- Templates with Mustache
 
 ### v1.3.0 (August 23, 2016)
 - Core update

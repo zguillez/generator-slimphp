@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 				open: true,
 				livereload: true
 			},
-			files: ['*.php', '**/*.php', 'inc/**/*.php', '.htaccess'],
+			files: ['*.php', '**/*.php', 'inc/**/*.php', 'inc/views/*.html', 'inc/views/partials/*.html', '.htaccess'],
 			tasks: ['build', 'clean:deploy', 'copy:deploy', 'exec:log']
 		}
 	});

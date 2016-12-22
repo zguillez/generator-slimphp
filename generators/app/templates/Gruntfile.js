@@ -15,7 +15,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['prepare', 'server']);
 	grunt.registerTask('prepare', ['exec:composer_update', 'exec:composer_install']);
 	grunt.registerTask('build', ['clean:dist', 'copy:dist', 'replace']);
-	grunt.registerTask('deploy', ['build', 'clean:deploy', 'copy:deploy', 'open:dev']);
+	grunt.registerTask('deploy', ['build', 'clean:deploy', 'copy:deploy', 'exec:log', 'open:dev']);
 	grunt.registerTask('serve', ['deploy', 'watch']);
 	grunt.registerTask('server', ['build', 'php']);
 	grunt.registerTask('publish', ['build', 'exec:ssh', 'open:pro']);
