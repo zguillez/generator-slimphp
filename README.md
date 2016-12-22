@@ -309,7 +309,6 @@ For more info check:
 * [https://github.com/zguillez/slim-mobile-detect](https://github.com/zguillez/slim-mobile-detect)
 * [https://packagist.org/packages/zguillez/slim-mobile-detect](https://packagist.org/packages/zguillez/slim-mobile-detect)
 
-
 #Templating
 
 Mustache templates is implemented. You can load a template from the route file
@@ -327,6 +326,27 @@ The templates files are on folders **/inc/views/** and  **/inc/views/partials/**
 For more info check:
 
 * [https://github.com/bobthecow/mustache.php](https://github.com/bobthecow/mustache.php)
+
+# Publish to production
+
+If you have SSH access to your production server, you can publish and upload the api files to the server by a Grunt task.
+
+Edit the config.json file:
+
+```
+"ssh": {
+  "ip": "",
+  "user": "",
+  "password": "",
+  "path": ""
+},
+```
+
+And publish with the command:
+
+```
+grunt publish
+```
 
 # Tools
 
@@ -353,7 +373,6 @@ if ($api->validateEmptyData($data, ['name', 'email'])) {
 	//error: 'name' or 'email' have empty value
 }
 ```
-
 
 # Contributing and issues
 Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
