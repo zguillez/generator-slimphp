@@ -25,12 +25,13 @@ module.exports = function (grunt) {
 		deploy: {
 			files: [{
 				src: ['.htaccess'],
-				dest: config.dev_path + "/",
+				dest: config.dev_path + "/" + config.www_folder + "/",
 				filter: 'isFile'
 			}, {
-				cwd: config.deploy_folder + "/",
+				expand: true,
+				cwd: config.deploy_folder,
 				src: ['**'],
-				dest: config.dev_path + "/"
+				dest: config.dev_path + "/" + config.www_folder + "/"
 			}]
 		}
 	});

@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 			options: {
 				force: true
 			},
-			src: [config.localhost_folder + "/api.php", config.localhost_folder + "/.htaccess", config.localhost_folder + "/inc/**", config.localhost_folder + "/vendor/**", config.localhost_folder + "/logs/**"]
+			src: [config.dev_path]
 		}
 	});
 };

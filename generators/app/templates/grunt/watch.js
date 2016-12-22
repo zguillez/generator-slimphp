@@ -8,8 +8,8 @@ module.exports = function (grunt) {
 				open: true,
 				livereload: true
 			},
-			files: ['*.php', 'inc/**/*.php', '.htaccess'],
-			tasks: ['phplint', 'sync', 'watch']
+			files: ['*.php', '**/*.php', 'inc/**/*.php', '.htaccess'],
+			tasks: ['build', 'clean:deploy', 'copy:deploy', 'exec:log']
 		}
 	});
 };
