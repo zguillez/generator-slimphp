@@ -36,7 +36,7 @@
     "grunt-mkdir": "~1.0.0",
     "grunt-open": "~0.2.3",
     "grunt-php": "~1.5.1",
-    "grunt-phplint": "~0.0.8",
+    "grunt-phplint": "~0.1.0",
     "grunt-sync": "~0.6.2",
     "grunt-text-replace": "^0.4.0",
     "gulp": "^3.9.1",
@@ -49,7 +49,7 @@
     "gulp-nsp": "^2.4.2",
     "gulp-plumber": "^1.1.0",
     "load-grunt-tasks": "~3.5.2",
-    "spawn-command": "0.0.2-1",
+    "spawn-command": "0.0.2",
     "time-grunt": "~1.4.0",
     "yeoman-assert": "^2.2.2",
     "yeoman-test": "^1.6.0"
