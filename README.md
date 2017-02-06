@@ -1,5 +1,7 @@
 # generator-slimphp
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/zguillez/generator-slimphp.svg)](https://greenkeeper.io/)
+
 [![npm version](https://badge.fury.io/js/generator-slimphp.svg)](https://badge.fury.io/js/generator-slimphp)
 [![Build Status](http://img.shields.io/travis/zguillez/generator-slimphp.svg)](https://travis-ci.org/zguillez/generator-slimphp)
 [![Code Climate](http://img.shields.io/codeclimate/github/zguillez/generator-slimphp.svg)](https://codeclimate.com/github/zguillez/generator-slimphp)
