@@ -19,7 +19,7 @@
     "Php"
   ],
   "dependencies": {
-    "yeoman-generator": "^1.0.1",
+    "yeoman-generator": "^2.0.0",
     "chalk": "^1.1.3",
     "yosay": "^1.2.1"
   },
