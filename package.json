@@ -37,7 +37,7 @@
     "grunt-open": "~0.2.3",
     "grunt-php": "~1.5.1",
     "grunt-phplint": "~0.1.0",
-    "grunt-sync": "~0.6.2",
+    "grunt-sync": "~0.7.0",
     "grunt-text-replace": "^0.4.0",
     "gulp": "^3.9.1",
     "gulp-coveralls": "^0.1.4",
