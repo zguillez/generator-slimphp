@@ -1,33 +1,41 @@
 {
-  "name": "generator-slimphp",
-  "version": "2.0.1",
-  "description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
+  "name": "api-slimphp",
+  "version": "2.5.0",
+  "description": "Backend API development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
-  "repository": "zguillez/generator-slimphp",
+  "repository": "",
   "author": {
     "name": "Guillermo de la Iglesia",
     "email": "mail@zguillez.io",
     "url": "https://github.com/zguillez"
   },
-  "dependencies": {
+  "scripts": {
+    "prepare-local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
+    "prepare-remote": "yarn run remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
+    "server": "php-serve --hostname localhost --port 8000 ./index.php",
+    "open": "open http://localhost:8000",
+    "open-remote": "open {site}",
+    "serve": "concurrently 'npm run server' 'npm run open'",
+    "deploy": "bin/deploy.js && yarn run open-remote",
+    "remote": "bin/remote.js"
   },
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "bower": "~1.8.0",
-    "time-grunt": "~1.4.0",
-    "grunt-php": "~1.5.1",
-    "grunt-open": "~0.2.3",
-    "grunt-bower-task": "~0.4.0",
-    "load-grunt-tasks": "~3.5.2",
-    "grunt-mkdir": "~1.0.0",
-    "grunt-sync": "~0.6.2",
-    "grunt-contrib-copy": "~1.0.0",
-    "grunt-contrib-clean": "~1.0.0",
-    "grunt-contrib-watch": "~1.0.0",
-    "grunt-phplint": "~0.0.8",
-    "grunt-exec": "~1.0.1",
-    "grunt-text-replace": "^0.4.0",
-    "spawn-command": "0.0.2-1"
+    "colors": "^1.1.2",
+    "concurrently": "^3.5.0",
+    "eslint": "^4.9.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "minimist": "^1.2.0",
+    "node-php-server": "^0.1.2",
+    "open-cli": "^1.0.5",
+    "remote-exec": "^0.0.3",
+    "shelljs": "^0.7.8",
+    "replace": "^0.3.0"
   }
 }

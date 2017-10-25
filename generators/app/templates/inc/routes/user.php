@@ -1,9 +1,7 @@
 <?php
+  return function($request, $response, $args) {
+    global $api;
+    $data = $api->query("SELECT * FROM usuarios");
 
-return function ($request, $response, $args) {
-	global $api;
-	$token = $request->getAttribute('token');
-	$data = $api->query("SELECT * FROM users WHERE token='" . $token . "'");
-
-	return $api->response($response, json_encode($data), 200, 'application/json');
-};
+    return $api->response($response, json_encode($data), 200, 'application/json');
+  };

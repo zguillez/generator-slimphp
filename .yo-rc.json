@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Guillermo de la Iglesia",
+      "authorEmail": "zguillez@gmail.com",
+      "authorUrl": "https://zguillez.io"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+	"ip": "{ip}",
+	"username": "{ssh-username}",
+	"password": "{ssh-password}",
+	"path": "/var/www/vhosts/{domain}/httpdocs/",
+	"domain": "http://{domain}",
+	"folder": "{database}",
+	"database": {
+		"ip": "{ip}",
+		"username": "{username}",
+		"password": "{password}",
+		"database": "{database}"
+	}
+}
