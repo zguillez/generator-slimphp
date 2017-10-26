@@ -46,7 +46,8 @@
     "node-php-server": "^0.1.2",
     "open-cli": "^1.0.5",
     "remote-exec": "^0.0.3",
-    "shelljs": "^0.7.8"
+    "shelljs": "^0.7.8",
+    "replace": "^0.3.0"
   },
   "jest": {
     "testEnvironment": "node"
