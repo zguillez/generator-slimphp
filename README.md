@@ -72,7 +72,7 @@ Edit the **.sshconfig** with the data of your SSH server access and data base co
 	"password": "{ssh-password}",
 	"path": "/var/www/vhosts/{domain}/httpdocs/",
 	"domain": "http://{domain}",
-	"folder": "{database}",
+	"folder": "api",
 	"database": {
 		"ip": "{ip}",
 		"username": "{username}",

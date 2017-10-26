@@ -4,7 +4,7 @@
 	"password": "{ssh-password}",
 	"path": "/var/www/vhosts/{domain}/httpdocs/",
 	"domain": "http://{domain}",
-	"folder": "{database}",
+	"folder": "api",
 	"database": {
 		"ip": "{ip}",
 		"username": "{username}",
