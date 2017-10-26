@@ -1,4 +1,5 @@
 #! /usr/bin/env node
+/* eslint no-unused-vars: "off", no-restricted-modules: "off" */
 const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
