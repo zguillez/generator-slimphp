@@ -4,9 +4,11 @@
 [![Build Status](http://img.shields.io/travis/zguillez/generator-slimphp.svg)](https://travis-ci.org/zguillez/generator-slimphp)
 [![Code Climate](http://img.shields.io/codeclimate/github/zguillez/generator-slimphp.svg)](https://codeclimate.com/github/zguillez/generator-slimphp)
 [![Dependency Status](https://gemnasium.com/zguillez/generator-slimphp.svg)](https://gemnasium.com/zguillez/generator-slimphp)
+
 [![Installs](https://img.shields.io/npm/dt/generator-slimphp.svg)](https://coveralls.io/r/zguillez/generator-slimphp)
 ![](https://reposs.herokuapp.com/?path=zguillez/generator-slimphp)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
+
 [![Join the chat at https://gitter.im/zguillez/generator-slimphp](https://badges.gitter.im/zguillez/generator-slimphp.svg)](https://gitter.im/zguillez/generator-slimphp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > [Zguillez](https://zguillez.io) | Guillermo de la Iglesia
