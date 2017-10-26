@@ -14,7 +14,6 @@
 > [Zguillez](https://zguillez.io) | Guillermo de la Iglesia
 
 ## Yeoman generator for backend API development with Slimframework 3 (PHP)
-![](http://zguillez.github.io/img/slimphp.png)
 
 # Getting Started
 ## Install Yeoman
@@ -28,9 +27,6 @@ To install generator-slimphp from npm, run:
 
 ```
 npm install -g generator-slimphp
-
-//or:
-sudo npm install -g generator-slimphp
 ```
 
 Finally, initiate the generator:
@@ -39,67 +35,70 @@ Finally, initiate the generator:
 yo slimphp
 ```
 
-Install composer dependences manually:
-
-```bash
-./composer.phar self-update && ./composer.phar install
-```
-
 ## Requeriments
-### [Composer](https://getcomposer.org/)
-For update composer
+
+### [Nodejs](https://nodejs.org)
+
+**Documentation:**
+- [https://nodejs.org](https://nodejs.org)
+
+
+### [Yarn](https://yarnpkg.com)
+
+**Documentation:**
+- [https://yarnpkg.com](https://yarnpkg.com)
+
+### [Composer](https://getcomposer.org)
+For update local composer
 
 ```
 ./composer.phar self-update
 ```
-
 **Documentation:**
-- [https://getcomposer.org/](https://getcomposer.org/)
-
+- [https://getcomposer.org](https://getcomposer.org)
 
 # Configuration
 
-**First of all** you need to edit the file */config.json*. 
+**FIRST OF ALL** you need to edit the file *.sshconfig*. 
 
-## Virtual host configuration
+## configuration file
 
-Edit the **dev_domain** param for set your developer localhost domain name.
+Edit the **.sshconfig** with the data of your SSH server access and data base configuration.
  
 ```
-"dev_domain": "http://slimphp.dev",
+{
+	"ip": "{ip}",
+	"username": "{ssh-username}",
+	"password": "{ssh-password}",
+	"path": "/var/www/vhosts/{domain}/httpdocs/",
+	"domain": "http://{domain}",
+	"folder": "{database}",
+	"database": {
+		"ip": "{ip}",
+		"username": "{username}",
+		"password": "{password}",
+		"database": "{database}"
+	}
+}
 ```
 
-Edit your localhost virtual host for your computer. Execute this shell command:
+## configure local environment
+
+Run de npm command **prepare-local**. This will edit the file *inc/config.php* with the *.sshconfig* data.
 
 ```
-sudo nano -w /etc/hosts
+yarn run prepare-local
 ```
 
-Add the virtual host:
+## configure remote server
+
+Run de npm command **prepare-remote**. Install composer dependencies.
 
 ```
-127.0.0.1       slimphp.dev
-127.0.0.1       www.slimphp.dev
+yarn run prepare-remote
 ```
 
-Set the path for your localhost app:
-
-```
-"dev_path": "/Users/zguillez/Sites/slimphp",
-```
-
-## Data base configuration
-
-Edit the **database** param for Database configuration
-
-```
-"database": {
-    "ip": "",
-    "user": "",
-    "password": "",
-    "database": ""
-  }
-```
+Must edit the
 
 ## Log System
 
@@ -131,33 +130,11 @@ Develop code on folder **/inc**
         /etc..
 ```
 
-## Compile code
-Use grunt task to compile code and deploy api
+## Local server
+Run npm task *serve* for development server
 
 ```
-grunt serve
-```
-
-This will launch your vistual host defined on config.json
-
-```
-http://slimphp.dev
-```
-
-And launch files on folder defined con param *dev_path*:
-
-```
-/Users/zguillez/Sites/slimphp
-```
-
-Distribute code is compileded on forder **/dist**
-
-```
-/dist
-    .htaccess
-    /inc
-    /index.php
-    /vendor
+yarn run serve
 ```
 
 # API Routes
@@ -331,23 +308,22 @@ For more info check:
 
 # Publish to production
 
-If you have SSH access to your production server, you can publish and upload the api files to the server by a Grunt task.
-
-Edit the config.json file:
+If you have SSH access to your production server, you can publish and upload the api files to the server by a npm task.
 
 ```
-"ssh": {
-  "ip": "",
-  "user": "",
-  "password": "",
-  "path": ""
-},
+yarn run deploy
 ```
 
-And publish with the command:
+To install composer dependencies run the task *prepare-remote*.
 
 ```
-grunt publish
+yarn run prepare-remote
+```
+
+You must edit the PHP path on the task **prepare-remote** at the file *packaje.json*.
+
+```
+'/opt/plesk/php/5.6/bin/php composer.phar update'
 ```
 
 # Tools
@@ -380,11 +356,19 @@ if ($api->validateEmptyData($data, ['name', 'email'])) {
 Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
 
 # License
-©2016 Zguillez.io
+©2017 Zguillez.io
 
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
 # Changelog
+### v2.5.0 (October 26, 2017)
+- Update yeoman generator
+- Config on .sshconfig file
+- Nodejs config tools
+- Add yarn dependencie
+- Remove grunt
+- Remove virtual host
+
 ### v2.0.0 (December 21, 2016)
 - Setup virtual host
 - Config on json file

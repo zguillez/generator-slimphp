@@ -1,6 +1,6 @@
 {
   "name": "api-slimphp",
-  "version": "2.5.0",
+  "version": "2.5.4",
   "description": "Backend API development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
