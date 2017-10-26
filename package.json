@@ -1,6 +1,6 @@
 {
   "name": "generator-slimphp",
-  "version": "2.5.7",
+  "version": "2.5.8",
   "description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
   "homepage": "",
   "author": {
@@ -46,8 +46,7 @@
     "node-php-server": "^0.1.2",
     "open-cli": "^1.0.5",
     "remote-exec": "^0.0.3",
-    "shelljs": "^0.7.8",
-    "replace": "^0.3.0"
+    "shelljs": "^0.7.8"
   },
   "jest": {
     "testEnvironment": "node"
