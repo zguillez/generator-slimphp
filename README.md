@@ -12,6 +12,8 @@
 
 ## Yeoman generator for backend API development with Slimframework 3 (PHP)
 
+![](http://zguillez.github.io/img/slimphp.png)
+
 # Getting Started
 ## Install Yeoman
 
@@ -353,7 +355,7 @@ if ($api->validateEmptyData($data, ['name', 'email'])) {
 Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
 
 # License
-©2017 Zguillez.io
+©2017 [Zguillez.io](https://zguillez.io)
 
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
