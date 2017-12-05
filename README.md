@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/generator-slimphp.svg)](https://badge.fury.io/js/generator-slimphp)
 [![Build Status](http://img.shields.io/travis/zguillez/generator-slimphp.svg)](https://travis-ci.org/zguillez/generator-slimphp)
-[![Maintainability](https://codeclimate.com/github/zguillez/generator-slimphp.png)](https://codeclimate.com/github/zguillez/generator-slimphp/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1814d5e1e4943ced8ed9/maintainability)](https://codeclimate.com/github/zguillez/generator-slimphp/maintainability)
 [![Dependency Status](https://gemnasium.com/zguillez/generator-slimphp.svg)](https://gemnasium.com/zguillez/generator-slimphp)
 [![Installs](https://img.shields.io/npm/dt/generator-slimphp.svg)](https://coveralls.io/r/zguillez/generator-slimphp)
 ![](https://reposs.herokuapp.com/?path=zguillez/generator-slimphp)
