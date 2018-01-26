@@ -22,20 +22,20 @@
   },
   "devDependencies": {
     "colors": "^1.1.2",
-    "concurrently": "^3.5.0",
-    "eslint": "^4.9.0",
-    "eslint-config-standard": "^10.2.1",
+    "concurrently": "^3.5.1",
+    "eslint": "^4.16.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-config-standard-react": "^5.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-react": "^7.6.0",
     "eslint-plugin-standard": "^3.0.1",
     "minimist": "^1.2.0",
     "node-php-server": "^0.1.2",
     "open-cli": "^1.0.5",
     "remote-exec": "^0.0.3",
-    "shelljs": "^0.7.8",
+    "shelljs": "^0.8.1",
     "replace": "^0.3.0"
   }
 }
