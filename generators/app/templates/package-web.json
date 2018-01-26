@@ -1,7 +1,7 @@
 {
-  "name": "api-slimphp",
-  "version": "2.6.1",
-  "description": "Backend API development with Slimframework 3 (PHP)",
+  "name": "slimphp",
+  "version": "2.7.0",
+  "description": "Web development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
   "repository": "",
@@ -13,23 +13,36 @@
   "scripts": {
     "prepare-local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
     "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
+    "min": "bin/min.js",
+    "min-images": "cd static && z min -d images -l 1 && mv imagemin/* images && rm -rf imagemin",
     "server": "php -S localhost:8000",
+    "watch": "npm-watch",
     "open": "open http://localhost:8000",
     "open-remote": "open {site}",
-    "serve": "concurrently 'npm run server' 'npm run open'",
-    "deploy": "bin/ssh.js && yarn open-remote",
+    "serve": "concurrently 'yarn open && yarn server' 'yarn watch'",
+    "deploy": "yarn deploy-ssh",
+    "deploy-ssh": "bin/ssh.js && yarn open-remote",
     "deploy-ftp": "bin/ftp.js && yarn open-remote",
     "remote": "bin/remote.js"
+  },
+  "watch": {
+    "min": {
+      "patterns": "inc/static",
+      "extensions": "js,css"
+    }
   },
   "devDependencies": {
     "colors": "^1.1.2",
     "concurrently": "^3.5.1",
     "easy-ftp": "^0.3.37",
     "minimist": "^1.2.0",
-    "php-serve": "^0.0.1",
     "open-cli": "^1.0.5",
     "remote-exec": "^0.0.3",
     "replace": "^0.3.0",
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.1",
+    "uglify-js": "3.2.1",
+    "uglify-js-es6": "2.8.9",
+    "npm-watch": "^0.3.0",
+    "clean-css": "^4.1.9"
   }
 }

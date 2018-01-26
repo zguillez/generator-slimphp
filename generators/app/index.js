@@ -8,40 +8,39 @@ const version = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../') + '
 module.exports = class extends Generator {
   prompting() {
     this.log(yosay('generator-slimphp ' + chalk.green(`v${version}`)));
-    /*const prompts = [{
-     type: 'confirm',
-     name: 'someAnswer',
-     message: 'Would you like to enable this option?',
-     default: true
-     }];*/
-    /*const prompts = [
+    const prompts = [
       {
-        type: 'text',
-        name: 'name',
-        message: 'Which is the app name?',
-        default: 'myapp'
-      }, {
         type: 'list',
-        name: 'framework',
-        message: 'Which Javascript framework you want to use?',
-        choices: ['Angular', 'Ionic', 'Polymer', 'ReactJS', 'Vue']
+        name: 'apptype',
+        message: 'Which type of app you want to create?',
+        choices: ['API Rest with JSON responses', 'Web with database connection']
       }
     ];
     return this.prompt(prompts).then(props => {
       this.props = props;
-    });*/
+    });
   }
 
   writing() {
-    this.fs.copy(this.templatePath('package.json'), this.destinationPath('package.json'));
+    let apptype;
+    if (this.props.apptype === 'API Rest with JSON responses') {
+      apptype = 'api';
+    } else if (this.props.apptype === 'Web with database connection') {
+      apptype = 'web';
+    }
+    this.fs.copy(this.templatePath(`package-${apptype}.json`), this.destinationPath('package.json'));
     this.fs.copy(this.templatePath('composer.json'), this.destinationPath('composer.json'));
     this.fs.copy(this.templatePath('composer.phar'), this.destinationPath('composer.phar'));
     this.fs.copy(this.templatePath('index.php'), this.destinationPath('index.php'));
-    this.fs.copy(this.templatePath('bin'), this.destinationPath('bin'));
-    this.fs.copy(this.templatePath('inc'), this.destinationPath('inc'));
+    this.fs.copy(this.templatePath(`bin-${apptype}`), this.destinationPath('bin'));
+    this.fs.copy(this.templatePath(`inc-${apptype}`), this.destinationPath('inc'));
     this.fs.copy(this.templatePath('logs'), this.destinationPath('logs'));
     this.fs.copy(this.templatePath('htaccess'), this.destinationPath('.htaccess'));
     this.fs.copy(this.templatePath('sshconfig'), this.destinationPath('.sshconfig'));
+    if (apptype === 'web') {
+      this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'));
+      this.fs.copy(this.templatePath('static'), this.destinationPath('static'));
+    }
   }
 
   install() {
