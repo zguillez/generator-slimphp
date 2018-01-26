@@ -70,25 +70,25 @@
     public function query($sql, $forceResults = false)
     {
       $this->last_insert_id = 0;
-      $myquery              = mysqli_query($this->database, $sql);
+      $query                = mysqli_query($this->database, $sql);
       if(mysqli_insert_id($this->database) > 0 && ! $forceResults) {
         $this->last_insert_id = mysqli_insert_id($this->database);
 
         return $this->last_insert_id;
       } else {
-        if(gettype($myquery) === 'object') {
+        if(gettype($query) === 'object') {
           $data = [];
-          while($result = $myquery->fetch_object()) {
+          while($result = $query->fetch_object()) {
             $data[] = $result;
           }
-        } else if(gettype($myquery) === 'boolean') {
+        } else if(gettype($query) === 'boolean') {
           if($forceResults) {
-            $data = $myquery;
+            $data = $query;
           } else {
             $data = $this->last_insert_id;
           }
         } else {
-          $data = $myquery;
+          $data = $query;
         }
 
         return $data;

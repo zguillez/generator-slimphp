@@ -7,15 +7,15 @@ const colors = require('colors');
 const rexec = require('remote-exec');
 const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8'));
 const options = {
-  username: config.username,
-  password: config.password
+  username: config.ssh.username,
+  password: config.ssh.password
 };
 //-----------------------------------
-if(argv.i) {
-  let command = `cd ${config.path} && ${argv.i}`;
+if (argv.i) {
+  let command = `cd ${config.ssh.path} && ${argv.i}`;
   console.log(`=> Command: ${command}`.cyan);
-  rexec(config.ip, command, options, err => {
-    if(err) {
+  rexec(config.ssh.host, command, options, err => {
+    if (err) {
       console.log(`${err}`.red);
     } else {
       console.log(`${command} => Remote exec done!`.cyan);

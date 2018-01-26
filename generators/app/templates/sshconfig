@@ -1,12 +1,22 @@
 {
-	"ip": "{ip}",
-	"username": "{ssh-username}",
-	"password": "{ssh-password}",
-	"path": "/var/www/vhosts/{domain}/httpdocs/",
-	"domain": "http://{domain}",
-	"folder": "api",
+    "domain": "https://{mydomain.com}",
+    "ssh": {
+        "host": "{ip}",
+        "username": "{username}",
+        "password": "{password}",
+        "path": "/var/www/vhosts/{mydomain.com}/httpdocs/",
+        "folder": "{folder}"
+	},
+    "ftp": {
+        "host": "ftp.{mydomain.com}",
+        "port": 21,
+        "username": "{username}",
+        "password": "{password}",
+        "local": "./",
+        "remote": "/"
+     },
 	"database": {
-		"ip": "{ip}",
+		"host": "{ip}",
 		"username": "{username}",
 		"password": "{password}",
 		"database": "{database}"

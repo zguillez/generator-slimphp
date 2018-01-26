@@ -8,19 +8,19 @@ const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.sshconfig
 //-----------------------------------
 replace({
   regex: "{site}",
-  replacement: config.domain + "/" + config.folder,
+  replacement: config.domain,
   paths: ['package.json'],
   silent: true
 });
 replace({
   regex: "{folder}",
-  replacement: config.folder,
+  replacement: config.ssh.folder,
   paths: ['inc/config.php'],
   silent: true
 });
 replace({
   regex: "{ip}",
-  replacement: config.database.ip,
+  replacement: config.database.host,
   paths: ['inc/config.php'],
   silent: true
 });

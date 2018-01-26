@@ -35,7 +35,6 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copy(this.templatePath('package.json'), this.destinationPath('package.json'));
     this.fs.copy(this.templatePath('composer.json'), this.destinationPath('composer.json'));
-    this.fs.copy(this.templatePath('composer.lock'), this.destinationPath('composer.lock'));
     this.fs.copy(this.templatePath('composer.phar'), this.destinationPath('composer.phar'));
     this.fs.copy(this.templatePath('index.php'), this.destinationPath('index.php'));
     this.fs.copy(this.templatePath('bin'), this.destinationPath('bin'));

@@ -1,6 +1,6 @@
 {
   "name": "api-slimphp",
-  "version": "2.5.0",
+  "version": "2.6.1",
   "description": "Backend API development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
@@ -12,30 +12,24 @@
   },
   "scripts": {
     "prepare-local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
-    "prepare-remote": "yarn run remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
-    "server": "php-serve --hostname localhost --port 8000 ./index.php",
+    "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
+    "server": "php -S localhost:8000",
     "open": "open http://localhost:8000",
     "open-remote": "open {site}",
     "serve": "concurrently 'npm run server' 'npm run open'",
-    "deploy": "bin/deploy.js && yarn run open-remote",
+    "deploy": "bin/ssh.js && yarn open-remote",
+    "deploy-ftp": "bin/ftp.js && yarn open-remote",
     "remote": "bin/remote.js"
   },
   "devDependencies": {
     "colors": "^1.1.2",
     "concurrently": "^3.5.1",
-    "eslint": "^4.16.0",
-    "eslint-config-standard": "^11.0.0-beta.0",
-    "eslint-config-standard-react": "^5.0.0",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-react": "^7.6.0",
-    "eslint-plugin-standard": "^3.0.1",
+    "easy-ftp": "^0.3.37",
     "minimist": "^1.2.0",
-    "node-php-server": "^0.1.2",
+    "php-serve": "^0.0.1",
     "open-cli": "^1.0.5",
     "remote-exec": "^0.0.3",
-    "shelljs": "^0.8.1",
-    "replace": "^0.3.0"
+    "replace": "^0.3.0",
+    "shelljs": "^0.8.1"
   }
 }
