@@ -22,7 +22,7 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    let apptype;
+    let apptype = 'all';
     if (this.props.apptype === 'API Rest with JSON responses') {
       apptype = 'api';
     } else if (this.props.apptype === 'Web with database connection') {
