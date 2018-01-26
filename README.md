@@ -66,17 +66,27 @@ Edit the **.sshconfig** with the data of your SSH server access and data base co
  
 ```
 {
-	"ip": "{ip}",
-	"username": "{ssh-username}",
-	"password": "{ssh-password}",
-	"path": "/var/www/vhosts/{domain}/httpdocs/",
-	"domain": "http://{domain}",
-	"folder": "api",
+    "domain": "https://{mydomain.com}",
+    "ssh": {
+        "host": "{ip}",
+        "username": "{username}",
+        "password": "{password}",
+        "path": "/var/www/vhosts/{mydomain.com}/httpdocs/",
+        "folder": "{folder}"
+	},
+    "ftp": {
+        "host": "ftp.{mydomain.com}",
+        "port": 21,
+        "username": "{username}",
+        "password": "{password}",
+        "local": "./",
+        "remote": "/"
+     },
 	"database": {
-		"ip": "{ip}",
-		"username": "{username}",
-		"password": "{password}",
-		"database": "{database}"
+		"host": "{xip}",
+		"username": "{xusername}",
+		"password": "{xpassword}",
+		"database": "{xdatabase}"
 	}
 }
 ```
@@ -86,7 +96,7 @@ Edit the **.sshconfig** with the data of your SSH server access and data base co
 Run de npm command **prepare-local**. This will edit the file *inc/config.php* with the *.sshconfig* data.
 
 ```
-yarn run prepare-local
+yarn prepare-local
 ```
 
 ## configure remote server
@@ -94,10 +104,16 @@ yarn run prepare-local
 Run de npm command **prepare-remote**. Install composer dependencies.
 
 ```
-yarn run prepare-remote
+yarn prepare-remote
 ```
 
-Must edit the
+## Disable the database connection
+
+If your api don't connect to a database, you need to remove the *require* of the config in the file *index.php*.
+
+```
+//require 'inc/config.php';
+```
 
 ## Log System
 
@@ -133,7 +149,7 @@ Develop code on folder **/inc**
 Run npm task *serve* for development server
 
 ```
-yarn run serve
+yarn serve
 ```
 
 # API Routes
@@ -310,13 +326,13 @@ For more info check:
 If you have SSH access to your production server, you can publish and upload the api files to the server by a npm task.
 
 ```
-yarn run deploy
+yarn deploy
 ```
 
 To install composer dependencies run the task *prepare-remote*.
 
 ```
-yarn run prepare-remote
+yarn prepare-remote
 ```
 
 You must edit the PHP path on the task **prepare-remote** at the file *packaje.json*.
