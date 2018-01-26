@@ -83,10 +83,10 @@ Edit the **.sshconfig** with the data of your SSH server access and data base co
         "remote": "/"
      },
 	"database": {
-		"host": "{xip}",
-		"username": "{xusername}",
-		"password": "{xpassword}",
-		"database": "{xdatabase}"
+		"host": "{ip}",
+		"username": "{username}",
+		"password": "{password}",
+		"database": "{database}"
 	}
 }
 ```
