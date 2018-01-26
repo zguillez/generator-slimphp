@@ -13,7 +13,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'apptype',
         message: 'Which type of app you want to create?',
-        choices: ['API Rest with JSON responses', 'Web with database connection']
+        choices: ['API Rest with JSON responses', 'Web with database connection', 'Web + API Rest']
       }
     ];
     return this.prompt(prompts).then(props => {
@@ -27,6 +27,8 @@ module.exports = class extends Generator {
       apptype = 'api';
     } else if (this.props.apptype === 'Web with database connection') {
       apptype = 'web';
+    } else if (this.props.apptype === 'Web + API Rest') {
+      apptype = 'all';
     }
     this.fs.copy(this.templatePath(`package-${apptype}.json`), this.destinationPath('package.json'));
     this.fs.copy(this.templatePath('composer.json'), this.destinationPath('composer.json'));

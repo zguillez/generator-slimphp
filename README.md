@@ -376,6 +376,9 @@ Contributors are welcome, please fork and send pull requests! If you have any id
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
 # Changelog
+### v2.6.0 (January 26, 2018)
+- Add prompt for web development project
+
 ### v2.5.0 (October 26, 2017)
 - Update yeoman generator
 - Config on .sshconfig file
