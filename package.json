@@ -39,7 +39,7 @@
     "php-serve": "^0.0.1",
     "open-cli": "^1.0.5",
     "remote-exec": "^0.0.3",
-    "replace": "^0.3.0",
+    "replace": "^1.0.0",
     "shelljs": "^0.8.1"
   },
   "jest": {
