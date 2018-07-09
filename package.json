@@ -29,10 +29,10 @@
     "yeoman-assert": "^3.1.0",
     "yeoman-test": "^1.7.0",
     "yeoman-generator": "^2.0.2",
-    "yosay": "^2.0.1"
+    "yosay": "^2.0.1",
+    "chalk": "^2.3.0"
   },
   "dependencies": {
-    "chalk": "^2.3.0",
     "colors": "^1.1.2",
     "concurrently": "^3.5.1",
     "easy-ftp": "^0.3.37",
