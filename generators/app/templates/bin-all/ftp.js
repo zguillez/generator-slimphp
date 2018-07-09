@@ -9,7 +9,7 @@ const ftp = new EasyFtp();
 // -----------------------------------
 ftp.connect(config.ftp);
 let files = [
-  `${config.ftp.local}.htaccess`, `${config.ftp.local}index.php`, `${config.ftp.local}inc`, `${config.ftp.local}static`//, `${config.ftp.local}vendor`, `${config.ftp.local}logs`
+  `${config.ftp.local}.htaccess`, `${config.ftp.local}index.php`, `${config.ftp.local}inc`, `${config.ftp.local}static`// , `${config.ftp.local}vendor`, `${config.ftp.local}logs`
 ];
 ftp.upload(files, config.ftp.remote, err => {
   if (err) {

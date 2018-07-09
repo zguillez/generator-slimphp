@@ -1,6 +1,6 @@
 {
   "name": "slimphp",
-  "version": "2.7.0",
+  "version": "2.6.2",
   "description": "Backend API development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
@@ -14,8 +14,8 @@
     "prepare-local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
     "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
     "server": "php -S localhost:8000",
-    "open": "open http://localhost:8000",
-    "open-remote": "open {site}",
+    "open": "opn http://localhost:8000",
+    "open-remote": "opn {site}",
     "serve": "concurrently 'yarn open && yarn server'",
     "deploy": "yarn deploy-ssh",
     "deploy-ssh": "bin/ssh.js && yarn open-remote",
@@ -27,9 +27,9 @@
     "concurrently": "^3.5.1",
     "easy-ftp": "^0.3.37",
     "minimist": "^1.2.0",
-    "open-cli": "^1.0.5",
+    "opn-cli": "^3.1.0",
     "remote-exec": "^0.0.3",
-    "replace": "^0.3.0",
+    "replace": "^1.0.0",
     "shelljs": "^0.8.1"
   }
 }

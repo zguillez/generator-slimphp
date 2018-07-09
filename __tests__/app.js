@@ -1,3 +1,4 @@
+/* eslint no-undef: "off" */
 'use strict';
 var path = require('path');
 var assert = require('yeoman-assert');
@@ -5,7 +6,7 @@ var helpers = require('yeoman-test');
 describe('generator-slimphp:app', () => {
   beforeAll(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({ someAnswer: true });
+      .withPrompts({someAnswer: true});
   });
   it('creates files', () => {
     assert.file([]);

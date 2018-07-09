@@ -1,8 +1,10 @@
 {
   "name": "generator-slimphp",
-  "version": "2.6.1",
+  "version": "2.6.2",
   "description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
-  "homepage": "",
+  "license": "MIT",
+  "main": "generators/index.js",
+  "repository": "https://github.com/zguillez/generator-slimphp",
   "author": {
     "name": "Guillermo de la Iglesia",
     "email": "mail@zguillez.io",
@@ -11,7 +13,6 @@
   "files": [
     "generators"
   ],
-  "main": "generators/index.js",
   "keywords": [
     "yeoman-generator",
     "Slim",
@@ -19,27 +20,26 @@
     "Php"
   ],
   "devDependencies": {
-    "yeoman-test": "^1.7.0",
-    "yeoman-assert": "^3.1.0",
     "coveralls": "^3.0.0",
-    "nsp": "^3.1.0",
     "eslint": "^4.16.0",
     "eslint-config-xo-space": "^0.17.0",
     "jest": "^22.1.4",
-    "jest-cli": "^22.1.4"
+    "jest-cli": "^22.1.4",
+    "nsp": "^3.1.0",
+    "yeoman-assert": "^3.1.0",
+    "yeoman-test": "^1.7.0",
+    "yeoman-generator": "^2.0.2",
+    "yosay": "^2.0.1"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.2",
     "chalk": "^2.3.0",
-    "yosay": "^2.0.1",
     "colors": "^1.1.2",
     "concurrently": "^3.5.1",
     "easy-ftp": "^0.3.37",
     "minimist": "^1.2.0",
-    "php-serve": "^0.0.1",
-    "open-cli": "^1.0.5",
+    "opn-cli": "^3.1.0",
     "remote-exec": "^0.0.3",
-    "replace": "^0.3.0",
+    "replace": "^1.0.0",
     "shelljs": "^0.8.1"
   },
   "jest": {
@@ -47,7 +47,6 @@
   },
   "scripts": {
     "prepublish": "nsp check",
-    "prepublish": "",
     "pretest": "eslint . --fix",
     "test": "jest"
   },
@@ -57,7 +56,5 @@
       "jest": true,
       "node": true
     }
-  },
-  "repository": "/zguillez/generator-slimphp",
-  "license": "MIT"
+  }
 }

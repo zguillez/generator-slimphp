@@ -14,7 +14,7 @@ let readFile = (file, ext, resolve, reject) => {
 };
 let writeFilePromise = (file, html, ext) => {
   return new Promise((resolve, reject) => {
-    fs.writeFile(`static/${file}.min.${ext}`, html, (err) => {
+    fs.writeFile(`static/${file}.min.${ext}`, html, err => {
       if (err) {
         reject(err);
       }
@@ -22,12 +22,12 @@ let writeFilePromise = (file, html, ext) => {
     });
   });
 };
-let minifierCSSFile = (file) => {
+let minifierCSSFile = file => {
   let readFilePromise = new Promise((resolve, reject) => {
     readFile(file, 'css', resolve, reject);
   });
   readFilePromise.then(function (data) {
-    let css = new CleanCSS({ keepBreaks: true }).minify(data).styles;
+    let css = new CleanCSS({keepBreaks: true}).minify(data).styles;
     writeFilePromise(file, css, 'css').then(() => {
       console.log(`The file inc/static/${file}.min.css was saved!`.green);
     }).catch(function (err) {
@@ -37,14 +37,14 @@ let minifierCSSFile = (file) => {
     return console.log(`${err}`.red);
   });
 };
-let minifierJSFile = (file) => {
+let minifierJSFile = file => {
   let readFilePromise = new Promise((resolve, reject) => {
     readFile(file, 'js', resolve, reject);
   });
   readFilePromise.then(function (data) {
     let js = minify(data, {
       fromString: true,
-      beautify: true,
+      beautify: true
     });
     writeFilePromise(file, js.code, 'js').then(() => {
       console.log(`The file inc/static/${file}.min.js was saved!`.green);
