@@ -1,6 +1,6 @@
 {
   "name": "generator-slimphp",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "generators/index.js",
@@ -19,28 +19,29 @@
     "Slimframework",
     "Php"
   ],
-  "devDependencies": {
-    "coveralls": "^3.0.0",
-    "eslint": "^4.16.0",
-    "eslint-config-xo-space": "^0.17.0",
-    "jest": "^22.1.4",
-    "jest-cli": "^22.1.4",
-    "nsp": "^3.1.0",
-    "yeoman-assert": "^3.1.0",
-    "yeoman-test": "^1.7.0",
-    "yeoman-generator": "^2.0.2",
-    "yosay": "^2.0.1",
-    "chalk": "^2.3.0"
-  },
   "dependencies": {
-    "colors": "^1.1.2",
-    "concurrently": "^3.5.1",
-    "easy-ftp": "^0.3.37",
-    "minimist": "^1.2.0",
-    "opn-cli": "^3.1.0",
-    "remote-exec": "^0.0.3",
-    "replace": "^1.0.0",
-    "shelljs": "^0.8.1"
+    "chalk": "^2.4.1",
+    "deep-extend": "^0.6.0",
+    "generator-node": "^2.4.1",
+    "inquirer-npm-name": "^3.0.0",
+    "lodash": "^4.17.10",
+    "mkdirp": "^0.5.1",
+    "superb": "^2.0.0",
+    "yeoman-generator": "^3.0.0",
+    "yosay": "^2.0.2"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.2",
+    "eslint": "^5.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-xo-space": "^0.19.0",
+    "eslint-plugin-prettier": "^2.6.2",
+    "jest": "^23.4.0",
+    "jest-cli": "^23.4.0",
+    "nsp": "^3.2.1",
+    "prettier": "^1.13.7",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-test": "^1.8.0"
   },
   "jest": {
     "testEnvironment": "node"
