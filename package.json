@@ -22,29 +22,32 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "deep-extend": "^0.6.0",
-    "generator-node": "^2.4.1",
+    "generator-node": "^2.5.0",
     "inquirer-npm-name": "^3.0.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.11",
     "mkdirp": "^0.5.1",
     "superb": "^3.0.0",
-    "yeoman-generator": "^3.0.0",
+    "yeoman-generator": "^3.1.1",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
-    "eslint": "^5.1.0",
+    "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-config-xo-space": "^0.20.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "jest": "^23.4.0",
-    "jest-cli": "^23.4.0",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
     "nsp": "^3.2.1",
-    "prettier": "^1.13.7",
+    "prettier": "^1.15.2",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^1.8.0"
+    "yeoman-test": "^1.9.1"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "globals": {
+      "window": true
+    }
   },
   "scripts": {
     "prepublish": "nsp check",
