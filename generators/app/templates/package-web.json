@@ -1,6 +1,6 @@
 {
   "name": "slimphp",
-  "version": "2.6.2",
+  "version": "2.6.3",
   "description": "Web development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
@@ -26,18 +26,18 @@
     "remote": "bin/remote.js"
   },
   "devDependencies": {
-    "colors": "^1.1.2",
-    "concurrently": "^3.5.1",
-    "easy-ftp": "^0.3.37",
+    "colors": "^1.3.2",
+    "concurrently": "^4.1.0",
+    "easy-ftp": "^0.3.44",
     "minimist": "^1.2.0",
-    "opn-cli": "^3.1.0",
+    "opn-cli": "^4.0.0",
     "remote-exec": "^0.0.3",
     "replace": "^1.0.0",
-    "shelljs": "^0.8.1",
-    "uglify-js": "3.2.1",
+    "shelljs": "^0.8.3",
+    "uglify-js": "3.4.9",
     "uglify-js-es6": "2.8.9",
-    "npm-watch": "^0.3.0",
-    "clean-css": "^4.1.9"
+    "npm-watch": "^0.4.0",
+    "clean-css": "^4.2.1"
   },
   "watch": {
     "min": {
