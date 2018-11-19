@@ -1,6 +1,6 @@
 {
   "name": "slimphp",
-  "version": "2.6.3",
+  "version": "2.6.4",
   "description": "Web development with Slimframework 3 (PHP)",
   "license": "MIT",
   "main": "index.php",
