@@ -33,7 +33,7 @@
   "devDependencies": {
     "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
-    "eslint-config-prettier": "^3.3.0",
+    "eslint-config-prettier": "^4.0.0",
     "eslint-config-xo-space": "^0.20.0",
     "eslint-plugin-prettier": "^3.0.0",
     "jest": "^23.6.0",
