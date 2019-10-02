@@ -13,7 +13,7 @@ module.exports = class extends Generator {
         type: 'list',
         name: 'apptype',
         message: 'Which type of app you want to create?',
-        choices: ['API Rest with JSON responses', 'Web with database connection', 'Web + API Rest']
+        choices: ['[3.12.2] API Rest with JSON responses', '[3.12.2] Web with database connection', '[3.12.2] Web + API Rest', '[4.2.0] API Rest with JSON responses']
       }
     ];
     return this.prompt(prompts).then(props => {
@@ -22,26 +22,34 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    let apptype = 'all';
-    if (this.props.apptype === 'API Rest with JSON responses') {
-      apptype = 'api';
-    } else if (this.props.apptype === 'Web with database connection') {
-      apptype = 'web';
-    } else if (this.props.apptype === 'Web + API Rest') {
-      apptype = 'all';
+    let apptype = '3all';
+    if (this.props.apptype === '[3.12.2] API Rest with JSON responses') {
+      apptype = '3api';
+    } else if (this.props.apptype === '[3.12.2] Web with database connection') {
+      apptype = '3web';
+    } else if (this.props.apptype === '[3.12.2] Web + API Rest') {
+      apptype = '3all';
+    } else if (this.props.apptype === '[4.2.0] API Rest with JSON responses') {
+      apptype = '4api';
     }
     this.fs.copy(this.templatePath(`package-${apptype}.json`), this.destinationPath('package.json'));
-    this.fs.copy(this.templatePath('composer.json'), this.destinationPath('composer.json'));
+    this.fs.copy(this.templatePath(`composer-${apptype}.json`), this.destinationPath('composer.json'));
     this.fs.copy(this.templatePath('composer.phar'), this.destinationPath('composer.phar'));
     this.fs.copy(this.templatePath('index.php'), this.destinationPath('index.php'));
     this.fs.copy(this.templatePath(`bin-${apptype}`), this.destinationPath('bin'));
-    this.fs.copy(this.templatePath(`inc-${apptype}`), this.destinationPath('inc'));
     this.fs.copy(this.templatePath('logs'), this.destinationPath('logs'));
     this.fs.copy(this.templatePath('htaccess'), this.destinationPath('.htaccess'));
     this.fs.copy(this.templatePath('sshconfig'), this.destinationPath('.sshconfig'));
-    if (apptype === 'web') {
+    if (apptype === '3web') {
       this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'));
       this.fs.copy(this.templatePath('static'), this.destinationPath('static'));
+    }
+    if (apptype === '4api') {
+      this.fs.copy(this.templatePath(`inc-${apptype}/app`), this.destinationPath('app'));
+      this.fs.copy(this.templatePath(`inc-${apptype}/src`), this.destinationPath('src'));
+      this.fs.copy(this.templatePath(`inc-${apptype}/index.php`), this.destinationPath('index.php'));
+    } else {
+      this.fs.copy(this.templatePath(`inc-${apptype}`), this.destinationPath('inc'));
     }
   }
 
@@ -51,7 +59,7 @@ module.exports = class extends Generator {
       npm: false,
       yarn: true,
       callback: () => {
-        console.log(chalk.green(`=> Everything is ready!`));
+        console.log(chalk.green('=> Everything is ready!'));
       }
     });
   }

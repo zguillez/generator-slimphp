@@ -1,0 +1,9 @@
+{
+  "require": {
+    "slim/slim": "^3.12.2",
+    "zguillez/slim-mobile-detect": "^1.0",
+    "zguillez/php-xmlog": "^1.1",
+    "mustache/mustache": "^2.11",
+    "phpoffice/phpexcel": "^1.8"
+  }
+}

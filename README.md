@@ -7,7 +7,7 @@
 
 > [Zguillez](https://zguillez.io) | Guillermo de la Iglesia
 
-## Yeoman generator for backend API development with Slimframework 3 (PHP)
+## Yeoman generator for backend API development with [PHP Slim micro framework](http://www.slimframework.com/)
 
 ![](http://zguillez.github.io/img/slimphp.png)
 
@@ -368,11 +368,16 @@ if ($api->validateEmptyData($data, ['name', 'email'])) {
 Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
 
 # License
-©2018 [Zguillez.io](https://zguillez.io)
+©2019 [Zguillez.io](https://zguillez.io)
 
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
 # Changelog
+### v3.0.0 (Octover 2, 2019)
+- Update to Slim 3.12.2
+- Add Slim 4.2.0 option
+
+- Add prompt for web development project
 ### v2.6.0 (January 26, 2018)
 - Add prompt for web development project
 
@@ -404,11 +409,11 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 - Fix yo install version
 
 ### v0.1.0 (January 7, 2016)
-Initial Slim Framework skeleton
+- Initial Slim Framework skeleton
 
 Features:
 
-* Slimframework
+* Slim micro framework
 * External route files
 * Grunt tasks
 
