@@ -20,6 +20,7 @@ if (argv.i) {
     } else {
       console.log(`${command} => Remote exec done!`.cyan);
     }
+
     console.log('=> Done!'.green);
   });
 } else {

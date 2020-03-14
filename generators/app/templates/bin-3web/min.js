@@ -9,19 +9,23 @@ let readFile = (file, ext, resolve, reject) => {
     if (err) {
       reject(err);
     }
+
     resolve(data);
   });
 };
+
 let writeFilePromise = (file, html, ext) => {
   return new Promise((resolve, reject) => {
     fs.writeFile(`static/${file}.min.${ext}`, html, err => {
       if (err) {
         reject(err);
       }
+
       resolve();
     });
   });
 };
+
 let minifierCSSFile = file => {
   let readFilePromise = new Promise((resolve, reject) => {
     readFile(file, 'css', resolve, reject);
@@ -37,6 +41,7 @@ let minifierCSSFile = file => {
     return console.log(`${err}`.red);
   });
 };
+
 let minifierJSFile = file => {
   let readFilePromise = new Promise((resolve, reject) => {
     readFile(file, 'js', resolve, reject);
@@ -55,5 +60,6 @@ let minifierJSFile = file => {
     return console.log(`${err}`.red);
   });
 };
+
 minifierCSSFile('styles');
 minifierJSFile('scripts');

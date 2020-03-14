@@ -32,6 +32,7 @@ module.exports = class extends Generator {
     } else if (this.props.apptype === '[4.2.0] API Rest with JSON responses') {
       apptype = '4api';
     }
+
     this.fs.copy(this.templatePath(`package-${apptype}.json`), this.destinationPath('package.json'));
     this.fs.copy(this.templatePath(`composer-${apptype}.json`), this.destinationPath('composer.json'));
     this.fs.copy(this.templatePath('composer.phar'), this.destinationPath('composer.phar'));
@@ -44,6 +45,7 @@ module.exports = class extends Generator {
       this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'));
       this.fs.copy(this.templatePath('static'), this.destinationPath('static'));
     }
+
     if (apptype === '4api') {
       this.fs.copy(this.templatePath(`inc-${apptype}/app`), this.destinationPath('app'));
       this.fs.copy(this.templatePath(`inc-${apptype}/src`), this.destinationPath('src'));
