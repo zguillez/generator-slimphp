@@ -26,18 +26,18 @@
     "remote": "bin/remote.js"
   },
   "devDependencies": {
-    "colors": "^1.3.2",
-    "concurrently": "^4.1.0",
-    "easy-ftp": "^0.3.44",
-    "minimist": "^1.2.0",
-    "opn-cli": "^4.0.0",
+    "colors": "^1.4.0",
+    "concurrently": "^5.1.0",
+    "easy-ftp": "^0.4.1",
+    "minimist": "^1.2.5",
+    "opn-cli": "^5.0.0",
     "remote-exec": "^0.0.3",
-    "replace": "^1.0.0",
+    "replace": "^1.1.5",
     "shelljs": "^0.8.3",
-    "uglify-js": "3.4.9",
+    "uglify-js": "3.8.0",
     "uglify-js-es6": "2.8.9",
-    "npm-watch": "^0.4.0",
-    "clean-css": "^4.2.1"
+    "npm-watch": "^0.6.0",
+    "clean-css": "^4.2.3"
   },
   "watch": {
     "min": {
