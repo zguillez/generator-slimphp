@@ -368,11 +368,15 @@ if ($api->validateEmptyData($data, ['name', 'email'])) {
 Contributors are welcome, please fork and send pull requests! If you have any ideas on how to make this project better then please submit an issue or send me an [email](mailto:mail@zguillez.io).
 
 # License
-©2019 [Zguillez.io](https://zguillez.io)
+©2020 [Zguillez.io](https://zguillez.io)
 
 Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Open Source projects used within this project retain their original licenses.
 
 # Changelog
+### v3.1.0 (March 20, 2020)
+- Update Slimphp 3 api template
+- Update dependencies
+
 ### v3.0.0 (Octover 2, 2019)
 - Update to Slim 3.12.2
 - Add Slim 4.2.0 option
