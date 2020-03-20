@@ -1,6 +1,6 @@
 {
   "name": "slimphp",
-  "version": "2.6.4",
+  "version": "3.0.2",
   "description": "Backend API development with PHP Slim micro framework 3",
   "license": "MIT",
   "main": "index.php",
@@ -11,24 +11,28 @@
     "url": "https://github.com/zguillez"
   },
   "scripts": {
-    "prepare-local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
-    "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
-    "server": "php -S localhost:8000",
-    "open": "opn http://localhost:8000",
-    "open-remote": "opn {site}",
-    "serve": "concurrently 'yarn open && yarn server'",
-    "deploy": "yarn deploy-ssh",
-    "deploy-ssh": "bin/ssh.js && yarn open-remote",
-    "deploy-ftp": "bin/ftp.js && yarn open-remote",
-    "remote": "bin/remote.js"
+    "clean": "find . -type f -name .DS_Store -exec rm -f {} \\;",
+    "prepare:local": "npm i && ./composer.phar self-update && ./composer.phar install && bin/replace.js",
+    "prepare:remote": "ssh root@{host} 'cd {path} && /opt/plesk/php/5.6/bin/php ./composer.phar update'",
+    "prepare:db": "mysql -u {username} -p{password} -h {ip} {database} < db/dump.txt",
+    "db:dump": "mysqldump -u {username} -p{password} -h {ip} {database} | gzip > $(date '+%Y-%m-%d_%H%M%S').sql.gz",
+    "start": "php -S localhost:8000",
+    "open": "open http://localhost:8000",
+    "open:remote": "open {site}",
+    "serve": "concurrently 'npm run open && npm run start'",
+    "deploy": "npm run deploy:lite && npm run open:remote",
+    "deploy:lite": "npm run deploy:ssh",
+    "deploy:ssh": "bin/ssh.js",
+    "deploy:ftp": "bin/ftp.js",
+    "deploy:scp": "scp -r .htaccess index.php composer.* inc logs root@{host}:{path}",
+    "deploy:git": "ssh root@{host} 'cd {path} && git pull origin master'"
   },
   "devDependencies": {
     "colors": "^1.4.0",
     "concurrently": "^5.1.0",
     "easy-ftp": "^0.4.1",
     "minimist": "^1.2.5",
-    "opn-cli": "^5.0.0",
-    "remote-exec": "^0.0.3",
+    "open-cli": "^6.0.0",
     "replace": "^1.1.5",
     "shelljs": "^0.8.3"
   }

@@ -1,0 +1,70 @@
+<form action="#" id="form" method="post">
+  <div>
+    <input id="name" name="name" placeholder="Name" type="text"/>
+  </div>
+  <div>
+    <input id="lastname" name="lastname" placeholder="Lastname" type="text"/>
+  </div>
+  <div>
+    <input id="email" name="email" placeholder="Email" type="email"/>
+  </div>
+  <div id="fileUpload">
+    <input class="validate" id="file" name="file" type="file"> <input name="token" type="hidden"/> <input name="url" type="hidden"/>
+  </div>
+  <div class="submit">
+    <input id="submit" name="submit" type="submit" value="SEND"/>
+  </div>
+</form>
+<script src="//cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+  document.getElementById('file').onchange = (e) => {
+    e.preventDefault();
+    let reader = new FileReader();
+    let file = document.getElementById('fileUpload').querySelector('input[name="file"]').files[0];
+    let fileName = document.getElementById('fileUpload').querySelector('input[name="file"]').files[0].name;
+    if (file) {
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        axios.post('/upload/', {
+          fileName: fileName,
+          base64: reader.result,
+        })
+          .then(response => {
+            console.log(response.data);
+            document.getElementById('fileUpload').querySelector('input[name="url"]').value = response.data['url'];
+            document.getElementById('fileUpload').querySelector('input[name="token"]').value = response.data['token'];
+            document.getElementById('fileUpload').querySelector('input[name="file"]').classList.remove('error');
+          })
+          .catch(error => {
+            console.log('Error: ', error);
+            document.getElementById('fileUpload').querySelector('input[name="file"]').classList.add('error');
+          });
+      };
+      reader.onerror = (error) => {
+        console.log('Error: ', error);
+      };
+    }
+  };
+  document.getElementById('form').onsubmit = (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById('name').value,
+      lastname: document.getElementById('lastname').value,
+      email: document.getElementById('email').value,
+      upload: document.getElementById('fileUpload').querySelector('input[name="token"]').value
+    };
+    console.log(data);
+    axios.post('/users/', data)
+      .then(response => {
+        console.log(response.data);
+        if (response.data.status === 1) {
+          alert("*** OK ***");
+        } else {
+          alert("*** ERROR ***");
+        }
+      })
+      .catch(error => {
+        console.log('Error: ', error);
+      });
+  };
+</script>

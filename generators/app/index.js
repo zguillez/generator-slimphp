@@ -32,20 +32,19 @@ module.exports = class extends Generator {
     } else if (this.props.apptype === '[4.2.0] API Rest with JSON responses') {
       apptype = '4api';
     }
-
     this.fs.copy(this.templatePath(`package-${apptype}.json`), this.destinationPath('package.json'));
     this.fs.copy(this.templatePath(`composer-${apptype}.json`), this.destinationPath('composer.json'));
     this.fs.copy(this.templatePath('composer.phar'), this.destinationPath('composer.phar'));
     this.fs.copy(this.templatePath('index.php'), this.destinationPath('index.php'));
     this.fs.copy(this.templatePath(`bin-${apptype}`), this.destinationPath('bin'));
     this.fs.copy(this.templatePath('logs'), this.destinationPath('logs'));
+    this.fs.copy(this.templatePath('db'), this.destinationPath('db'));
     this.fs.copy(this.templatePath('htaccess'), this.destinationPath('.htaccess'));
     this.fs.copy(this.templatePath('sshconfig'), this.destinationPath('.sshconfig'));
     if (apptype === '3web') {
       this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('.eslintrc.js'));
       this.fs.copy(this.templatePath('static'), this.destinationPath('static'));
     }
-
     if (apptype === '4api') {
       this.fs.copy(this.templatePath(`inc-${apptype}/app`), this.destinationPath('app'));
       this.fs.copy(this.templatePath(`inc-${apptype}/src`), this.destinationPath('src'));

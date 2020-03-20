@@ -17,6 +17,5 @@ ftp.upload(files, config.ftp.remote, err => {
   } else {
     console.log('=> Done!\n'.green);
   }
-
   ftp.close();
 });
