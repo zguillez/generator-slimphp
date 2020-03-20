@@ -5,14 +5,16 @@ const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const colors = require('colors');
 const rexec = require('remote-exec');
-const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8'));
+const config = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8')
+);
 const options = {
   username: config.ssh.username,
   password: config.ssh.password
 };
 //-----------------------------------
 if (argv.i) {
-  let command = `cd ${config.ssh.path} && ${argv.i}`;
+  const command = `cd ${config.ssh.path} && ${argv.i}`;
   console.log(`=> Command: ${command}`.cyan);
   rexec(config.ssh.host, command, options, err => {
     if (err) {

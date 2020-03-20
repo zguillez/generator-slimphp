@@ -4,12 +4,17 @@ const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
 const EasyFtp = require('easy-ftp');
-const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8'));
+const config = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8')
+);
 const ftp = new EasyFtp();
 // -----------------------------------
 ftp.connect(config.ftp);
-let files = [
-  `${config.ftp.local}.htaccess`, `${config.ftp.local}index.php`, `${config.ftp.local}inc`, `${config.ftp.local}static`// , `${config.ftp.local}vendor`, `${config.ftp.local}logs`
+const files = [
+  `${config.ftp.local}.htaccess`,
+  `${config.ftp.local}index.php`,
+  `${config.ftp.local}inc`,
+  `${config.ftp.local}static` // , `${config.ftp.local}vendor`, `${config.ftp.local}logs`
 ];
 ftp.upload(files, config.ftp.remote, err => {
   if (err) {

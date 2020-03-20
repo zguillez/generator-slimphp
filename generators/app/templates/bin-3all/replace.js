@@ -4,7 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const colors = require('colors');
 const replace = require('replace');
-const config = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8'));
+const config = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8')
+);
 // -----------------------------------
 replace({
   regex: '{site}',
