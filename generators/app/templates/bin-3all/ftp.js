@@ -8,13 +8,15 @@ const config = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8')
 );
 const ftp = new EasyFtp();
-// -----------------------------------
+//-----------------------------------
 ftp.connect(config.ftp);
 const files = [
   `${config.ftp.local}.htaccess`,
   `${config.ftp.local}index.php`,
+  `${config.ftp.local}composer.json`,
+  `${config.ftp.local}composer.phar`,
   `${config.ftp.local}inc`,
-  `${config.ftp.local}static` // , `${config.ftp.local}vendor`, `${config.ftp.local}logs`
+  `${config.ftp.local}logs`
 ];
 ftp.upload(files, config.ftp.remote, err => {
   if (err) {
@@ -22,6 +24,5 @@ ftp.upload(files, config.ftp.remote, err => {
   } else {
     console.log('=> Done!\n'.green);
   }
-
   ftp.close();
 });

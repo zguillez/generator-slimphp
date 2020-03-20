@@ -5,8 +5,15 @@
   {{>_css}}
 </head>
 <body>
-<h1>Hello {{name}}</h1>
-<h2>{{>footer}}</h2>
+<div id="wrap">
+  <section id="content">
+    <header>
+      <h1>{{title}}</h1>
+    </header>
+    <img src="{{img}}">
+  </section>
+  <footer>{{>footer}}</footer>
+</div>
 {{>_js}}
 </body>
 </html>

@@ -1,0 +1,38 @@
+$color1: #2d2e2e;
+$color2: #979899;
+$color3: #e0a80d;
+//---------------
+* {
+  box-sizing: border-box;
+}
+
+html, body, #wrap {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $color1;
+  color: $color2;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  text-align: center;
+  #wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
+      color: $color3;
+    }
+    section#content {
+      img {
+        max-width: 90%;
+        width: 200px;
+      }
+    }
+  }
+}

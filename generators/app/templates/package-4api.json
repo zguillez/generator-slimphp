@@ -2,25 +2,25 @@
   "name": "slimphp",
   "version": "2.6.4",
   "description": "Backend API development with PHP Slim micro framework 4",
-  "license": "MIT",
-  "main": "index.php",
   "repository": "",
+  "license": "MIT",
   "author": {
     "name": "Guillermo de la Iglesia",
     "email": "mail@zguillez.io",
     "url": "https://github.com/zguillez"
   },
+  "main": "index.php",
   "scripts": {
-    "prepare-local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
-    "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
-    "server": "php -S localhost:8000",
+    "deploy": "yarn deploy-ssh",
+    "deploy-ftp": "bin/ftp.js && yarn open-remote",
+    "deploy-ssh": "bin/ssh.js && yarn open-remote",
     "open": "opn http://localhost:8000",
     "open-remote": "opn {site}",
+    "prepare:local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
+    "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
+    "remote": "bin/remote.js",
     "serve": "concurrently 'yarn open && yarn server'",
-    "deploy": "yarn deploy-ssh",
-    "deploy-ssh": "bin/ssh.js && yarn open-remote",
-    "deploy-ftp": "bin/ftp.js && yarn open-remote",
-    "remote": "bin/remote.js"
+    "server": "php -S localhost:8000"
   },
   "devDependencies": {
     "colors": "^1.4.0",

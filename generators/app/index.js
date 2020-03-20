@@ -17,8 +17,8 @@ module.exports = class extends Generator {
         message: "Which type of app you want to create?",
         choices: [
           "[3.12.2] API Rest with JSON responses",
+          "[3.12.2] Web without database connection",
           "[3.12.2] Web with database connection",
-          "[3.12.2] Web + API Rest",
           "[4.2.0] API Rest with JSON responses"
         ]
       }
@@ -32,9 +32,11 @@ module.exports = class extends Generator {
     let apptype = "3all";
     if (this.props.apptype === "[3.12.2] API Rest with JSON responses") {
       apptype = "3api";
-    } else if (this.props.apptype === "[3.12.2] Web with database connection") {
+    } else if (
+      this.props.apptype === "[3.12.2] Web without database connection"
+    ) {
       apptype = "3web";
-    } else if (this.props.apptype === "[3.12.2] Web + API Rest") {
+    } else if (this.props.apptype === "[3.12.2] Web with database connection") {
       apptype = "3all";
     } else if (this.props.apptype === "[4.2.0] API Rest with JSON responses") {
       apptype = "4api";
@@ -102,8 +104,8 @@ module.exports = class extends Generator {
   install() {
     this.installDependencies({
       bower: false,
-      npm: false,
-      yarn: true,
+      npm: true,
+      yarn: false,
       callback: () => {
         console.log(chalk.green("=> Everything is ready!"));
       }

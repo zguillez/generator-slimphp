@@ -90,10 +90,10 @@ Edit the **.sshconfig** with the data of your SSH server access and data base co
 
 ## configure local environment
 
-Run de npm command **prepare-local**. This will edit the file *inc/config.php* with the *.sshconfig* data.
+Run de npm command **prepare:local**. This will edit the file *inc/config.php* with the *.sshconfig* data.
 
 ```
-yarn prepare-local
+yarn prepare:local
 ```
 
 ## configure remote server
@@ -375,6 +375,7 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 # Changelog
 ### v3.1.0 (March 20, 2020)
 - Update Slimphp 3 api template
+- Update Slimphp 3 web template
 - Update dependencies
 
 ### v3.0.0 (Octover 2, 2019)

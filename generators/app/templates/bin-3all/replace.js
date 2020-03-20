@@ -7,10 +7,46 @@ const replace = require('replace');
 const config = JSON.parse(
   fs.readFileSync(path.resolve(__dirname, '../.sshconfig'), 'utf8')
 );
-// -----------------------------------
+//-----------------------------------
 replace({
   regex: '{site}',
   replacement: config.domain,
+  paths: ['package.json'],
+  silent: true
+});
+replace({
+  regex: '{host}',
+  replacement: config.ssh.host,
+  paths: ['package.json'],
+  silent: true
+});
+replace({
+  regex: '{path}',
+  replacement: config.ssh.path,
+  paths: ['package.json'],
+  silent: true
+});
+replace({
+  regex: '{username}',
+  replacement: config.database.username,
+  paths: ['package.json'],
+  silent: true
+});
+replace({
+  regex: '{password}',
+  replacement: config.database.password,
+  paths: ['package.json'],
+  silent: true
+});
+replace({
+  regex: '{ip}',
+  replacement: config.database.host,
+  paths: ['package.json'],
+  silent: true
+});
+replace({
+  regex: '{database}',
+  replacement: config.database.database,
   paths: ['package.json'],
   silent: true
 });
@@ -42,6 +78,12 @@ replace({
   regex: '{database}',
   replacement: config.database.database,
   paths: ['inc/config.php'],
+  silent: true
+});
+replace({
+  regex: '{database}',
+  replacement: config.database.database,
+  paths: ['db/dump.txt'],
   silent: true
 });
 console.log('=> Done!\n'.green);

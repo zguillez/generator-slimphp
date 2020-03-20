@@ -1,10 +1,1 @@
-/* eslint no-unused-vars: "off", no-undef: "off" */
-
-const hello = 'test ok!';
-
-console.log(hello);
-
-window.module = window.module || {};
-module.exports = {
-  hello
-};
+console.log('ok');
