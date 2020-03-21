@@ -375,7 +375,8 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 # Changelog
 ### v3.1.0 (March 20, 2020)
 - Update Slimphp 3 api template
-- Update Slimphp 3 webw template
+- Update Slimphp 3 web template
+- Update Slimphp 3 web++ template
 - Update dependencies
 
 ### v3.0.0 (Octover 2, 2019)
