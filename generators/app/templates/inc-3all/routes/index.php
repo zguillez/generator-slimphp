@@ -1,8 +1,14 @@
 <?php
 return function ($request, $response, $args) {
   global $api;
-  $name = $request->getAttribute('name');
-  $html = $api->template('index', ['name' => $name, 'copy' => 'z']);
+  //$get = $request->getAttribute('get');
+  $autenticated = $api->authenticated($request, $response);
+  $html = $api->template('index', [
+      'autenticated' => $autenticated,
+      'title' => 'SlimPHP demo',
+      'img' => '/static/images/zguillez.png',
+      'copy' => '@2020 zguillez'
+  ]);
   //for debug
   //$api->log->insert ( $request->getUri () );
   //$api->log->insert ( $html );

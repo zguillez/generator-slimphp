@@ -1,0 +1,70 @@
+$color1: #2d2e2e;
+$color2: #979899;
+$color3: #e0a80d;
+$color4: #212222;
+$color5: #e31d2f;
+//---------------
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: $color3;
+}
+
+input:not([type="submit"]) {
+  border: none;
+  padding: 5px 10px;
+  background: $color2;
+  color: $color4;
+  margin-bottom: 5px;
+}
+
+html, body, #wrap {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $color1;
+  color: $color2;
+  font-family: 'OpenSans';
+  font-size: 13px;
+  text-align: center;
+  header {
+    text-align: right;
+    padding: 10px;
+    background: $color4;
+  }
+  #wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    section#content {
+      h1 {
+        font-size: 16px;
+        font-weight: bold;
+        color: $color3;
+      }
+      img {
+        max-width: 90%;
+        width: 200px;
+      }
+      form {
+        input:not([type="submit"]):not([type="checkbox"]) {
+          width: 300px;
+          max-width: 100%;
+          border: 1px solid $color4;
+          &.error {
+            border: 1px solid $color5;
+          }
+        }
+      }
+      #thanks {
+        display: none;
+      }
+    }
+  }
+}

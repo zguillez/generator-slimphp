@@ -72,12 +72,19 @@ module.exports = class extends Generator {
       this.templatePath("sshconfig"),
       this.destinationPath(".sshconfig")
     );
-    if (apptype === "3web") {
+    if (apptype === "3web" || apptype === "3all") {
       this.fs.copy(
         this.templatePath("eslintrc.js"),
         this.destinationPath(".eslintrc.js")
       );
       this.fs.copy(this.templatePath("static"), this.destinationPath("static"));
+    }
+
+    if (apptype === "3all") {
+      this.fs.copy(
+        this.templatePath("static"),
+        this.destinationPath("uploads")
+      );
     }
 
     if (apptype === "4api") {

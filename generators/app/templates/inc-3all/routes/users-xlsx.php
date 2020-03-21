@@ -1,7 +1,7 @@
 <?php
 return function ($request, $response, $args) {
   global $api;
-  $data = $api->query("SELECT * FROM usuarios");
+  $data = $api->query("SELECT * FROM users");
   //
   $doc = new \PHPExcel();
   $doc->setActiveSheetIndex(0);
@@ -19,9 +19,10 @@ return function ($request, $response, $args) {
     $doc->getActiveSheet()->SetCellValue('E' . $index, $reg->creado);
     $index++;
   }
-  $filename = "usuarios.xlsx";
+  $filename = "users.xlsx";
   $objWriter = \PHPExcel_IOFactory::createWriter($doc, 'Excel2007');
   $objWriter->save('php://output');
   header('Content-Disposition: attachment; filename=' . $filename);
+
   return $api->response($response, '', 200, 'application/vnd.ms-excel');
 };

@@ -2,22 +2,28 @@
 return function ($request, $response, $args) {
   global $api;
   session_start();
-  $targetPath = dirname(dirname(dirname((dirname(__FILE__))))) . '/uploads/' . session_id();
+  $targetPath = dirname(dirname((dirname(__FILE__)))) . '/uploads/' . session_id();
+  $targetUrl = $api->baseurl . '/uploads/' . session_id();
   if (!is_dir($targetPath)) {
     mkdir($targetPath, 0755, true);
   }
+  $result = [];
+  $result["path"] = $targetPath;
   if (!empty($_FILES)) {
     $tempFile = $_FILES['file']['tmp_name'];
     list($width, $height) = getimagesize($tempFile);
     /**/
     $ext = strtolower(end(explode('.', $_FILES['file']['name'])));
-    $targetFile = $targetPath . '/' . md5(date("Y-m-d H:i:s")) . '.' . $ext;
+    $fileName = $api->token();
+    $targetFile = $targetPath . '/' . $fileName . '.' . $ext;
+    $url = $targetUrl . '/' . $fileName . '.' . $ext;
     move_uploaded_file($tempFile, $targetFile);
-    $status = 1;
-    $url = str_replace('/var/www/vhosts/', 'http://', $targetFile);
-    $url = str_replace('/httpdocs/', '/', $url);
+    $result["status"] = 0;
     $result["original"] = $url;
-    /* thumbnail */
+    /**
+     * thumb
+     */
+    $thumbWidth = 400;
     if ($ext == 'jpeg') {
       $tempFile = imagecreatefromjpeg($targetFile);
     } else if ($ext == 'jpg') {
@@ -29,19 +35,18 @@ return function ($request, $response, $args) {
     } else if ($ext == 'bmp') {
       $tempFile = imagecreatefromwbmp($targetFile);
     }
-    $thumbWidth = 400;
     $new_width = $thumbWidth;
     $new_height = floor($height * ($thumbWidth / $width));
     $tempFile2 = imagecreatetruecolor($new_width, $new_height);
     imagecopyresized($tempFile2, $tempFile, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-    $targetFile = $targetPath . '/' . md5(date("Y-m-d H:i:s")) . '_' . $thumbWidth . '.' . $ext;
+    $targetFile = $targetPath . '/' . $fileName . '_' . $thumbWidth . '.jpg';
     imagejpeg($tempFile2, $targetFile);
-    $url = str_replace('/var/www/vhosts/', 'http://', $targetFile);
-    $url = str_replace('/httpdocs/', '/', $url);
-    $result["resize"] = $url;
+    $url = $targetUrl . '/' . $fileName . '_' . $thumbWidth . '.jpg';
+    $result["thumbnail"] = $url;
   } else {
-    $status = 0;
-    $result["error"] = "FILES EMPTY";
+    $result["status"] = 0;
+    $result["error"] = "DATA ERROR: empty fields";
   }
-  return $api->response($response, json_encode(Array('status' => $status, 'result' => $result)), 200, 'application/json');
+
+  return $api->response($response, json_encode($result), 200, 'application/json');
 };

@@ -1,0 +1,22 @@
+<h3>Uploads</h3>
+<ul>
+  {{#uploads}}
+  <li>{{email}} <a href="{{url}}" target="_blank">{{filename}}.{{type}}</a> <button onclick="removeUpload('{{token}}')">delete</button></li>
+  {{/uploads}}
+</ul>
+<script>
+  const removeUpload = (token) => {
+    axios.post('/upload/delete/', {
+      token: token
+    })
+      .then(response => {
+        console.log(response.data);
+        if (response.data.status === 1) {
+          location.reload();
+        }
+      })
+      .catch(error => {
+        console.log('Error: ', error);
+      });
+  };
+</script>

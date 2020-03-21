@@ -7,6 +7,7 @@ return function ($request, $response, $args) {
     $route2 = str_replace('{', '', $route);
     $route2 = str_replace('}', '', $route2);
     $html .= '<li><a target="_blank" href="' . $api->baseurl . $route2 . '">' . $api->baseurl . $route . '</a></li>';
+
     return $html;
   }
 
@@ -14,5 +15,6 @@ return function ($request, $response, $args) {
     $html = addroute($api, $html, $route);
   }
   $html .= '</ul>';
-  return $api->response($response, $html, 200, 'text/html');
+
+  return $api->oauthResponse($request, $response, $html, 200, 'text/html');
 };

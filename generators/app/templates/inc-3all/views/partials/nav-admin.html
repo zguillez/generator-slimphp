@@ -1,0 +1,16 @@
+<div>
+  {{#autenticated}}
+  <div><a href="/signout/">signout</a></div>
+  {{/autenticated}}
+  {{^autenticated}}
+  <div>
+    <form action="/signin/" method="post" style="display: inline-block">
+      <input name="email" placeholder="email" type="email">
+      <input name="password" placeholder="password" type="password">
+      <input name="redirect" type="hidden" value="/">
+      <input type="submit" value="Sign in">
+    </form>
+    <button onclick="javascript:location.href='/signup/'">Sign up</button>
+  </div>
+  {{/autenticated}}
+</div>

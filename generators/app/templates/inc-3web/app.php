@@ -17,11 +17,17 @@ class App
 
   public function __construct()
   {
-    $this->host = 'http://' . $_SERVER['SERVER_NAME'];
+    $this->host = 'https://' . $_SERVER['SERVER_NAME'];
     $this->baseurl = ($this->host === 'http://127.0.0.1') ? 'http://localhost:8000' : $this->host;
     $this->routes = [];
     $this->break = "";
-    $this->app = new \Slim\App();
+    $configuration = [
+      'settings' => [
+        'displayErrorDetails' => true,
+      ],
+    ];
+    $c = new \Slim\Container($configuration);
+    $this->app = new \Slim\App($c);
     $this->app->getContainer()['notFoundHandler'] = function ($container) {
       return function ($request, $response) use ($container) {
         return $this->response($container['response'], 'Page not found', 404);
@@ -60,6 +66,7 @@ class App
   {
     $response = new MobileResponse($response);
     $this->log->insert($data);
+
     return $response->withStatus($status)->withHeader('Content-type', $type)->write($data);
   }
 
@@ -71,7 +78,11 @@ class App
 
   public function folder($folder)
   {
-    $this->baseurl = ($this->host === 'http://127.0.0.1') ? 'http://localhost:8000' : $this->host . '/' . $folder;
+    if ($folder) {
+      $this->baseurl = ($this->host === 'http://127.0.0.1') ? 'http://localhost:8000' : $this->host . '/' . $folder;
+    } else {
+      $this->baseurl = $this->host;
+    }
   }
 
   public function query($sql, $forceResults = false)
@@ -80,6 +91,7 @@ class App
     $query = mysqli_query($this->database, $sql);
     if (mysqli_insert_id($this->database) > 0 && !$forceResults) {
       $this->last_insert_id = mysqli_insert_id($this->database);
+
       return $this->last_insert_id;
     } else {
       if (gettype($query) === 'object') {
@@ -96,6 +108,7 @@ class App
       } else {
         $data = $query;
       }
+
       return $data;
     }
   }
@@ -107,6 +120,7 @@ class App
         return false;
       }
     }
+
     return true;
   }
 
@@ -115,9 +129,11 @@ class App
     foreach ($params as $param) {
       if (!isset($data[$param]) || $data[$param] === '') {
         $this->break = $param;
+
         return false;
       }
     }
+
     return true;
   }
 
@@ -125,7 +141,59 @@ class App
   {
     $template = $this->mustache->loadTemplate($tpl);
     $html = $template->render($data);
+
     return $html;
+  }
+
+  public function cookie($action, $request_or_response, $cookieName, $cookieValue = null)
+  {
+    if ($action === 'set') {
+      if ($cookieValue) {
+        $time = time() + 2592000;
+      } else {
+        $time = time() - 3600;
+      }
+      setcookie($cookieName, $cookieValue, $time, "/", $_SERVER['SERVER_NAME'], 0, 1);
+
+      return $request_or_response;
+      //return $request_or_response->withHeader('Set-Cookie', $cookieName . '=' . $cookieValue . '; Domain=' . $_SERVER['SERVER_NAME'] . '; Path=/; Secure=0; HttpOnly=1');
+    } else if ($action === 'get') {
+      $cookies = $request_or_response->getCookieParams();
+
+      return isset($cookies[$cookieName]) ? $cookies[$cookieName] : null;
+    } else {
+      return $request_or_response;
+    }
+  }
+
+  public function token()
+  {
+    return md5(date("Y-m-d H:i:s") . rand());
+  }
+
+  public function authenticate($response, $token)
+  {
+    return $this->cookie('set', $response, 'token', $token);
+  }
+
+  public function authenticated($request)
+  {
+    $token = $this->cookie('get', $request, 'token');
+    $data = $this->query("SELECT * FROM users_oauth WHERE token='" . $token . "'");
+
+    return (count($data) > 0) ? $token : false;
+  }
+
+  public function oauthResponse($request, $response, $data = '', $status = 200, $type = 'text/html')
+  {
+    if ($this->authenticated($request)) {
+      $response = new MobileResponse($response);
+      $this->log->insert($data);
+
+      return $response->withStatus($status)->withHeader('Content-type', $type)->write($data);
+    } else {
+      return $response->withRedirect('/signin/');
+    }
   }
 }
 
