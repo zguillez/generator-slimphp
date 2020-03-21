@@ -382,8 +382,8 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 ### v3.0.0 (Octover 2, 2019)
 - Update to Slim 3.12.2
 - Add Slim 4.2.0 option
-
 - Add prompt for web development project
+
 ### v2.6.0 (January 26, 2018)
 - Add prompt for web development project
 
@@ -416,9 +416,7 @@ Original code licensed under [MIT](https://en.wikipedia.org/wiki/MIT_License) Op
 
 ### v0.1.0 (January 7, 2016)
 - Initial Slim Framework skeleton
-
 Features:
-
 * Slim micro framework
 * External route files
 * Grunt tasks
