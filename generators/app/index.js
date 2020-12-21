@@ -19,11 +19,11 @@ module.exports = class extends Generator {
           "[3.12.2] API Rest with JSON responses",
           "[3.12.2] Web without database connection",
           "[3.12.2] Web with database connection",
-          "[4.2.0] API Rest with JSON responses"
-        ]
-      }
+          "[4.2.0] API Rest with JSON responses",
+        ],
+      },
     ];
-    return this.prompt(prompts).then(props => {
+    return this.prompt(prompts).then((props) => {
       this.props = props;
     });
   }
@@ -43,66 +43,77 @@ module.exports = class extends Generator {
     }
 
     this.fs.copy(
-      this.templatePath(`package-${apptype}.json`),
+      this.templatePath(`${apptype}/package.json`),
       this.destinationPath("package.json")
     );
     this.fs.copy(
-      this.templatePath(`composer-${apptype}.json`),
+      this.templatePath(`${apptype}/composer.json`),
       this.destinationPath("composer.json")
     );
     this.fs.copy(
-      this.templatePath("composer.phar"),
+      this.templatePath(`${apptype}/composer.phar`),
       this.destinationPath("composer.phar")
     );
     this.fs.copy(
-      this.templatePath("index.php"),
+      this.templatePath(`${apptype}/index.php`),
       this.destinationPath("index.php")
     );
     this.fs.copy(
-      this.templatePath(`bin-${apptype}`),
+      this.templatePath(`${apptype}/bin`),
       this.destinationPath("bin")
     );
-    this.fs.copy(this.templatePath("logs"), this.destinationPath("logs"));
-    this.fs.copy(this.templatePath("db"), this.destinationPath("db"));
     this.fs.copy(
-      this.templatePath("htaccess"),
+      this.templatePath(`${apptype}/logs`),
+      this.destinationPath("logs")
+    );
+    this.fs.copy(
+      this.templatePath(`${apptype}/htaccess`),
       this.destinationPath(".htaccess")
     );
+
     this.fs.copy(
-      this.templatePath("sshconfig"),
-      this.destinationPath(".sshconfig")
+      this.templatePath(`${apptype}/db`),
+      this.destinationPath("db")
     );
+    this.fs.copy(
+      this.templatePath(`${apptype}/config.ini`),
+      this.destinationPath("config.ini")
+    );
+
     if (apptype === "3web" || apptype === "3all") {
       this.fs.copy(
-        this.templatePath("eslintrc.js"),
+        this.templatePath(`${apptype}/eslintrc.js`),
         this.destinationPath(".eslintrc.js")
       );
-      this.fs.copy(this.templatePath("static"), this.destinationPath("static"));
+      this.fs.copy(
+        this.templatePath(`${apptype}/static`),
+        this.destinationPath("static")
+      );
     }
 
     if (apptype === "3all") {
       this.fs.copy(
-        this.templatePath("static"),
+        this.templatePath(`${apptype}/uploads`),
         this.destinationPath("uploads")
       );
     }
 
     if (apptype === "4api") {
       this.fs.copy(
-        this.templatePath(`inc-${apptype}/app`),
+        this.templatePath(`${apptype}/inc/app`),
         this.destinationPath("app")
       );
       this.fs.copy(
-        this.templatePath(`inc-${apptype}/src`),
+        this.templatePath(`${apptype}/inc/src`),
         this.destinationPath("src")
       );
       this.fs.copy(
-        this.templatePath(`inc-${apptype}/index.php`),
+        this.templatePath(`${apptype}/inc/index.php`),
         this.destinationPath("index.php")
       );
     } else {
       this.fs.copy(
-        this.templatePath(`inc-${apptype}`),
+        this.templatePath(`${apptype}/inc`),
         this.destinationPath("inc")
       );
     }
@@ -115,7 +126,7 @@ module.exports = class extends Generator {
       yarn: false,
       callback: () => {
         console.log(chalk.green("=> Everything is ready!"));
-      }
+      },
     });
   }
 };

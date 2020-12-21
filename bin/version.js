@@ -26,7 +26,7 @@ replace({
   regex: `"version": "${config.version}"`,
   replacement: `"version": "${version.join(".")}"`,
   paths: ["package.json"],
-  silent: true
+  silent: true,
 });
 console.log(
   `=> Package update from version`.green,

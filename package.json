@@ -1,7 +1,7 @@
 {
   "name": "generator-slimphp",
-  "version": "3.1.9",
-  "description": "Yeoman generator for backend API development with Slimframework 3 (PHP)",
+  "version": "3.2.0",
+  "description": "Yeoman generator for Web development with Slimframework 3 (PHP)",
   "keywords": [
     "yeoman-generator",
     "Slim",
@@ -21,11 +21,14 @@
   ],
   "scripts": {
     "clean": "find . -type f -name .DS_Store -exec rm -f {} \\;",
-    "version": "bin/version.js",
-    "sort": "cd generators/app/templates && sort-package-json package-*.json",
+    "prepare": "bin/version.js --minor && z git push -m \"deploy version update\"",
     "pretest": "eslint . --fix",
     "test": "jest",
-    "update": "npm run sort && ncu -u && ncu -u --packageFile generators/app/templates/package-3all.json && ncu -u --packageFile generators/app/templates/package-3api.json && ncu -u --packageFile generators/app/templates/package-3web.json && ncu -u --packageFile generators/app/templates/package-4api.json"
+    "update": "npm run update:sort && npm run update:ncu && npm run update:composer",
+    "update:composer": "./generators/app/templates/3all/composer.phar self-update && ./generators/app/templates/3api/composer.phar self-update && ./generators/app/templates/3web/composer.phar self-update && ./generators/app/templates/4api/composer.phar self-update",
+    "update:ncu": "ncu -u && ncu -u --packageFile generators/app/templates/3all/package.json && ncu -u --packageFile generators/app/templates/3api/package.json && ncu -u --packageFile generators/app/templates/3web/package.json && ncu -u --packageFile generators/app/templates/4api/package.json",
+    "update:sort": "sort-package-json && sort-package-json generators/app/templates/3all/package.json && sort-package-json generators/app/templates/3api/package.json && sort-package-json generators/app/templates/3web/package.json && sort-package-json generators/app/templates/4api/package.json",
+    "version": "bin/version.js"
   },
   "husky": {
     "hooks": {
@@ -62,24 +65,24 @@
     "testEnvironment": "node"
   },
   "dependencies": {
-    "chalk": "^3.0.0",
-    "yeoman-generator": "^4.7.2",
+    "chalk": "^4.1.0",
+    "yeoman-generator": "^4.12.0",
     "yosay": "^2.0.2"
   },
   "devDependencies": {
     "colors": "^1.4.0",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.0",
-    "eslint-config-xo": "^0.29.1",
-    "eslint-plugin-prettier": "^3.1.2",
-    "husky": "^4.2.3",
-    "jest": "^25.1.0",
-    "lint-staged": "^10.0.8",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-config-xo": "^0.33.1",
+    "eslint-plugin-prettier": "^3.3.0",
+    "husky": "^4.3.6",
+    "jest": "^26.6.3",
+    "lint-staged": "^10.5.3",
     "minimist": "^1.2.5",
-    "prettier": "^1.19.1",
-    "replace": "^1.1.5",
+    "prettier": "^2.2.1",
+    "replace": "^1.2.0",
     "yeoman-assert": "^3.1.1",
-    "yeoman-test": "^2.3.0"
+    "yeoman-test": "^3.0.0"
   },
   "engines": {
     "npm": ">= 4.0.0"
