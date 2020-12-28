@@ -1,7 +1,7 @@
 # generator-slimphp
 
+[![Analytics](https://ga-beacon.appspot.com/UA-1125217-30/zguillez/generator-slimphp?pixel)](https://github.com/igrigorik/ga-beacon)
 [![npm version](https://badge.fury.io/js/generator-slimphp.svg)](https://badge.fury.io/js/generator-slimphp)
-[![Build Status](https://travis-ci.org/zguillez/generator-slimphp.svg?branch=master)](https://travis-ci.org/zguillez/generator-slimphp)
 [![Installs](https://img.shields.io/npm/dt/generator-slimphp.svg)](https://coveralls.io/r/zguillez/generator-slimphp)
 [![Gitter](https://badges.gitter.im/zguillez/generator-slimphp.svg)](https://gitter.im/zguillez/generator-slimphp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
@@ -420,5 +420,3 @@ Features:
 * Slim micro framework
 * External route files
 * Grunt tasks
-
-[![Analytics](https://ga-beacon.appspot.com/UA-1125217-30/zguillez/generator-slimphp?pixel)](https://github.com/igrigorik/ga-beacon)
