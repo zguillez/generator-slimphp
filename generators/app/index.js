@@ -43,6 +43,10 @@ module.exports = class extends Generator {
     }
 
     this.fs.copy(
+      this.templatePath(`htaccess`),
+      this.destinationPath(".htaccess")
+    );
+    this.fs.copy(
       this.templatePath(`${apptype}/package.json`),
       this.destinationPath("package.json")
     );
@@ -67,18 +71,28 @@ module.exports = class extends Generator {
       this.destinationPath("logs")
     );
     this.fs.copy(
-      this.templatePath(`${apptype}/htaccess`),
-      this.destinationPath(".htaccess")
+      this.templatePath("htaccess2"),
+      this.destinationPath("bin/.htaccess")
+    );
+    this.fs.copy(
+      this.templatePath("htaccess2"),
+      this.destinationPath("logs/.htaccess")
     );
 
-    this.fs.copy(
-      this.templatePath(`${apptype}/db`),
-      this.destinationPath("db")
-    );
-    this.fs.copy(
-      this.templatePath(`${apptype}/config.ini`),
-      this.destinationPath("config.ini")
-    );
+    if (apptype === "3api" || apptype === "3all") {
+      this.fs.copy(
+        this.templatePath(`config.ini`),
+        this.destinationPath("config.ini")
+      );
+      this.fs.copy(
+        this.templatePath(`${apptype}/db`),
+        this.destinationPath("db")
+      );
+      this.fs.copy(
+        this.templatePath("htaccess2"),
+        this.destinationPath("db/.htaccess")
+      );
+    }
 
     if (apptype === "3web" || apptype === "3all") {
       this.fs.copy(
@@ -91,10 +105,21 @@ module.exports = class extends Generator {
       );
     }
 
+    if (apptype === "3web") {
+      this.fs.copy(
+        this.templatePath(`config2.ini`),
+        this.destinationPath("config.ini")
+      );
+    }
+
     if (apptype === "3all") {
       this.fs.copy(
         this.templatePath(`${apptype}/uploads`),
         this.destinationPath("uploads")
+      );
+      this.fs.copy(
+        this.templatePath("htaccess2"),
+        this.destinationPath("uploads/.htaccess")
       );
     }
 

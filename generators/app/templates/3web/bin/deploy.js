@@ -16,9 +16,9 @@ const files = [
   `${config.ftp["ftp[local]"]}index.php`,
   `${config.ftp["ftp[local]"]}composer.json`,
   `${config.ftp["ftp[local]"]}composer.phar`,
-  `${config.ftp["ftp[local]"]}config.ini`,
   `${config.ftp["ftp[local]"]}inc`,
   `${config.ftp["ftp[local]"]}logs`,
+  `${config.ftp["ftp[local]"]}static`,
 ];
 //-----------------------------------
 if (argv.ftp) {

@@ -27,34 +27,4 @@ prepare({
   paths: ["package.json"],
   silent: true,
 });
-prepare({
-  regex: "{username}",
-  replacement: config.database["database[username]"],
-  paths: ["package.json"],
-  silent: true,
-});
-prepare({
-  regex: "{password}",
-  replacement: config.database["database[password]"],
-  paths: ["package.json"],
-  silent: true,
-});
-prepare({
-  regex: "{ip}",
-  replacement: config.database["database[host]"],
-  paths: ["package.json"],
-  silent: true,
-});
-prepare({
-  regex: "{database}",
-  replacement: config.database["database[host]"],
-  paths: ["package.json"],
-  silent: true,
-});
-prepare({
-  regex: "{database}",
-  replacement: config.database["database[database]"],
-  paths: ["db/dump.txt"],
-  silent: true,
-});
 console.log("=> Done!\n".green);

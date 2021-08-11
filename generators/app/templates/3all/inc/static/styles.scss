@@ -1,17 +1,15 @@
-$color1: #2d2e2e;
+$color1: #2D2E2E;
 $color2: #979899;
-$color3: #e0a80d;
+$color3: #E0A80D;
 $color4: #212222;
-$color5: #e31d2f;
+$color5: #E31D2F;
 //---------------
 * {
   box-sizing: border-box;
 }
-
 a {
   color: $color3;
 }
-
 input:not([type="submit"]) {
   border: none;
   padding: 5px 10px;
@@ -19,17 +17,15 @@ input:not([type="submit"]) {
   color: $color4;
   margin-bottom: 5px;
 }
-
 html, body, #wrap {
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
 body {
   background: $color1;
   color: $color2;
-  font-family: 'OpenSans';
+  font-family: "OpenSans";
   font-size: 13px;
   text-align: center;
   header {

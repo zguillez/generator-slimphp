@@ -3,7 +3,7 @@ return function ($request, $response, $args) {
   global $api;
   //$get = $request->getAttribute('get');
   $html = $api->template('index', [
-    'title' => 'SlimPHP demo',
+    'title' => '[ SlimPHP demo ]',
     'img' => 'static/images/zguillez.png',
     'copy' => '@2020 zguillez'
   ]);

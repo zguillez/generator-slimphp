@@ -1,7 +1,7 @@
 {
   "name": "slimphp",
-  "version": "2.6.4",
-  "description": "Backend API development with PHP Slim micro framework 4",
+  "version": "3.2.0",
+  "description": "Backend API development with Slimframework 4 (PHP)",
   "repository": "",
   "license": "MIT",
   "author": {
@@ -11,24 +11,28 @@
   },
   "main": "index.php",
   "scripts": {
-    "deploy": "yarn deploy-ssh",
-    "deploy-ftp": "bin/ftp.js && yarn open-remote",
-    "deploy-ssh": "bin/ssh.js && yarn open-remote",
-    "open": "opn http://localhost:8000",
-    "open-remote": "opn {site}",
-    "prepare-remote": "yarn remote -i '/opt/plesk/php/5.6/bin/php composer.phar update'",
-    "prepare:local": "./composer.phar self-update && ./composer.phar install && bin/replace.js",
-    "remote": "bin/remote.js",
-    "serve": "concurrently 'yarn open && yarn server'",
-    "server": "php -S localhost:8000"
+    "clean": "find . -type f -name .DS_Store -exec rm -f {} \\;",
+    "db:dump": "mysqldump -u {username} -p{password} -h {ip} {database} | gzip > $(date '+%Y-%m-%d_%H%M%S').sql.gz",
+    "db:prepare": "mysql -u {username} -p{password} -h {ip} {database} < db/dump.txt",
+    "deploy": "npm run deploy:ssh && npm run open:remote",
+    "deploy:ftp": "bin/deploy --ftp.js",
+    "deploy:git": "ssh root@{host} 'cd {path} && git pull origin master'",
+    "deploy:scp": "scp -r .htaccess index.php config.ini composer.* inc logs root@{host}:{path}",
+    "deploy:ssh": "bin/deploy.js --ssh",
+    "open": "open http://localhost:8000",
+    "open:remote": "open {site}",
+    "prepare:local": "npm i && ./composer.phar self-update && ./composer.phar install && bin/prepare.js",
+    "prepare:remote": "ssh root@{host} 'cd {path} && /usr/bin/php ./composer.phar update'",
+    "serve": "concurrently 'npm run open && npm run start'",
+    "start": "php -S localhost:8000"
   },
   "devDependencies": {
     "colors": "^1.4.0",
     "concurrently": "^5.3.0",
     "easy-ftp": "^0.4.1",
+    "ini": "^2.0.0",
     "minimist": "^1.2.5",
-    "opn-cli": "^5.0.0",
-    "remote-exec": "^0.0.3",
+    "open-cli": "^6.0.1",
     "replace": "^1.2.0",
     "shelljs": "^0.8.4"
   }

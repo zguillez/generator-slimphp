@@ -19,6 +19,8 @@ const files = [
   `${config.ftp["ftp[local]"]}config.ini`,
   `${config.ftp["ftp[local]"]}inc`,
   `${config.ftp["ftp[local]"]}logs`,
+  `${config.ftp["ftp[local]"]}static`,
+  `${config.ftp["ftp[local]"]}uploads`,
 ];
 //-----------------------------------
 if (argv.ftp) {

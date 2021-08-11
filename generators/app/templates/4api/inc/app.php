@@ -1,6 +1,10 @@
 <?php
 
-use Slim\Http\MobileResponse;
+use Psr\Http\Message\ResponseInterface as Response;
+use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Factory\AppFactory;
+
+//use Slim\Http\MobileResponse;
 use Z\Log;
 
 class App
@@ -21,26 +25,16 @@ class App
     $this->baseurl = ($this->host === 'http://127.0.0.1') ? 'http://localhost:8000' : $this->host;
     $this->routes = [];
     $this->break = "";
-    $configuration = [
-      'settings' => [
-        'displayErrorDetails' => true,
-      ],
-    ];
-    $c = new \Slim\Container($configuration);
-    $this->app = new \Slim\App($c);
-    $this->app->getContainer()['notFoundHandler'] = function ($container) {
-      return function ($request, $response) use ($container) {
-        return $this->response($container['response'], 'Page not found', 404);
-      };
-    };
+    $this->app = AppFactory::create();
+    $errorMiddleware = $this->app->addErrorMiddleware(true, true, true);
     $params["filename"] = "apicalls";
     $params["path"] = "./logs/";
     $this->log = new Log($params);
     $params["filename"] = "apisql";
     $params["path"] = "./logs/";
     $this->log2 = new Log($params);
-    $options = ['loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views', ['extension' => '.html']), 'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views/partials', ['extension' => '.html'])];
-    $this->mustache = new Mustache_Engine($options);
+    /*$options = ['loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views', ['extension' => '.html']), 'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__) . '/views/partials', ['extension' => '.html'])];
+    $this->mustache = new Mustache_Engine($options);*/
   }
 
   public function run()
@@ -64,10 +58,13 @@ class App
 
   public function response($response, $data = '', $status = 200, $type = 'text/html')
   {
-    $response = new MobileResponse($response);
+    //$response = new MobileResponse($response);
     $this->log->insert($data);
+    $response = $response->withStatus($status);
+    $response = $response->withHeader('Content-type', $type);
+    $response->getBody()->write($data);
 
-    return $response->withStatus($status)->withHeader('Content-type', $type)->write($data);
+    return $response;
   }
 
   public function database($host, $user, $password, $database)
@@ -137,7 +134,7 @@ class App
     return true;
   }
 
-  public function template($tpl, $data = [])
+  /*public function template($tpl, $data = [])
   {
     $template = $this->mustache->loadTemplate($tpl);
     $html = $template->render($data);
@@ -194,7 +191,7 @@ class App
     } else {
       return $response->withRedirect('/signin/');
     }
-  }
+  }*/
 }
 
 $api = new App();
