@@ -34,6 +34,6 @@
     "minimist": "^1.2.5",
     "open-cli": "^6.0.1",
     "replace": "^1.2.0",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.5"
   }
 }
