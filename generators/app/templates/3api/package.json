@@ -31,7 +31,7 @@
     "concurrently": "^5.3.0",
     "easy-ftp": "^0.4.1",
     "ini": "^2.0.0",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "open-cli": "^6.0.1",
     "replace": "^1.2.0",
     "shelljs": "^0.8.4"
