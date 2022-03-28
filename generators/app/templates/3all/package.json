@@ -44,7 +44,7 @@
     "imagemin-cli": "^6.0.0",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-pngquant": "^9.0.1",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "node-sass": "^5.0.0",
     "open-cli": "^6.0.1",
     "replace": "^1.2.0",
