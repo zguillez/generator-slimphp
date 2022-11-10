@@ -45,7 +45,7 @@
     "minimist": "^1.2.5",
     "node-sass": "^5.0.0",
     "open-cli": "^6.0.1",
-    "replace": "^1.2.0",
+    "replace": "^1.2.2",
     "shelljs": "^0.8.4",
     "terser": "^5.5.1"
   }
